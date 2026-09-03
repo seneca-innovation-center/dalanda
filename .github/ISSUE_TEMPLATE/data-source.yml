@@ -1,0 +1,51 @@
+name: Data source
+description: Propose a public data source. Do not attach a dump.
+title: "[Data source]: "
+labels: ["data-source"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Propose a **public** source of Tunisian text or speech. Do not upload corpora, scrapes, or files with personal data.
+        Stewards review against the roadmap and provenance rules.
+  - type: input
+    id: name
+    attributes:
+      label: Source name
+      placeholder: "e.g. a public corpus, site, or catalogue"
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: URL
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What is in it?
+      description: Language (Derja / MSA / mixed), script (Arabic / Arabizi), estimated size, modality.
+    validations:
+      required: true
+  - type: textarea
+    id: licence
+    attributes:
+      label: Licence and terms of use
+      description: Can we redistribute derivatives under Apache-2.0 / a compatible data licence? Quote the terms or link them.
+    validations:
+      required: true
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Provenance
+      description: Who collected it, how, and whether it is public-only. Flag personal or copyrighted material.
+    validations:
+      required: true
+  - type: checkboxes
+    id: no-dump
+    attributes:
+      label: No dump
+      options:
+        - label: I am not attaching a data dump. This issue is a pointer plus licence/provenance, not a dataset upload.
+          required: true

@@ -1,0 +1,33 @@
+name: Bug
+description: Report something that is broken in this repo (docs, CI, templates, layout).
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for defects in the public repo itself. Model quality and dataset issues belong in a contribution or data-source ticket unless they are a documented eval failure.
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce
+      description: Clone, install, and the commands you ran. Paste CI logs if relevant.
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: "OS, Python version, CI run URL"

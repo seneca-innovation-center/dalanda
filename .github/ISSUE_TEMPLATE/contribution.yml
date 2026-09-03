@@ -1,0 +1,43 @@
+name: Contribution
+description: Propose work you want to do (docs, tooling, process — not a data dump).
+title: "[Contribution]: "
+labels: ["contribution"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Propose a scoped contribution. Training code and data dumps are out of scope until the roadmap says otherwise.
+        See [docs/roadmap.md](../../docs/roadmap.md) and [ADR 0001](../../docs/adr/0001-open-source-community-model.md).
+  - type: textarea
+    id: goal
+    attributes:
+      label: What do you want to add or change?
+      description: One or two sentences. Link a roadmap item if you can.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: What is in this contribution? What is explicitly out?
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Kind of work
+      options:
+        - Documentation
+        - Tooling / CI
+        - Governance / process
+        - Data-source documentation (no dump)
+        - Other
+    validations:
+      required: true
+  - type: checkboxes
+    id: dco
+    attributes:
+      label: DCO
+      options:
+        - label: I can submit this under Apache-2.0 and will sign off commits (`git commit -s`) per the Developer Certificate of Origin.
+          required: true
