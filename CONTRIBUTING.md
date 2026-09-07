@@ -17,6 +17,7 @@ Do not open a PR that uploads a training corpus, weights, or a scrape.
 ```bash
 python3 -m venv .venv   # Python 3.9 or newer
 source .venv/bin/activate
+python -m pip install --upgrade pip
 pip install -e ".[dev]"
 ruff check .
 ruff format --check .

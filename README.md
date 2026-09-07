@@ -19,6 +19,7 @@ git clone https://github.com/seneca-innovation-center/dalanda.git
 cd dalanda
 python3 -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
+python -m pip install --upgrade pip
 pip install -e ".[dev]"
 ruff check .
 ruff format --check .
