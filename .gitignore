@@ -5,10 +5,15 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 .ruff_cache/
+.mypy_cache/
 .coverage
+coverage.xml
+htmlcov/
 dist/
 build/
+*.egg
 .env
 .env.*
 !.env.example
+node_modules/
 .DS_Store

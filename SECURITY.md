@@ -23,4 +23,10 @@ Model weights, training data, and hosted inference are not in this tree yet. Whe
 
 ## Secrets
 
-Never commit API keys, tokens, or `.env` files. Use `.env.example` as the template. CI runs a secret scan on pull requests; that does not replace careful review.
+Never commit API keys, tokens, or `.env` files. Use `.env.example` as the template. CI runs Gitleaks on the full git history of every pull request. GitHub secret scanning and push protection are on. That does not replace careful review.
+
+Full history was scanned with Gitleaks on 2026-09-11 (all commits then on `main`). No secrets or API keys were found, so nothing to rotate. There is no Dockerfile or docker-compose in this repository; do not add credentials if those files land later.
+
+## Dependency scanning
+
+Dependabot is enabled for pip and GitHub Actions. CI also runs `pip-audit` on every pull request.
