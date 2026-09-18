@@ -23,10 +23,11 @@ python -m pip install --upgrade pip
 pip install -e ".[dev]"
 ruff check .
 ruff format --check .
+mypy
 pytest -q
 ```
 
-GitHub Actions runs the same lint, format, and test commands on every pull request.
+GitHub Actions runs the same lint, format, type check, and test commands on every pull request. A failure in any of those jobs blocks merge.
 
 ## How to contribute
 

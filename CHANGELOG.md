@@ -3,6 +3,8 @@
 ## Unreleased
 
 - Record a full-history Gitleaks scan (clean) and run `pip-audit` in CI.
+- Split CI into lint, type check, and test jobs so each one can block a PR.
+- Replace the placeholder test with a check of installed package metadata.
 
 ## 0.0.1
 
