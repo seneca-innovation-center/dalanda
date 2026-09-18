@@ -21,6 +21,7 @@ python -m pip install --upgrade pip
 pip install -e ".[dev]"
 ruff check .
 ruff format --check .
+mypy
 pytest -q
 ```
 
@@ -29,8 +30,8 @@ To rewrite Python files to match the formatter, run `ruff format .`.
 ## Coding standards
 
 - Python 3.9 or newer.
-- Lint and format with Ruff (`ruff check`, `ruff format`). Config lives in `pyproject.toml`.
+- Lint and format with Ruff (`ruff check`, `ruff format`). Type-check with mypy. Config lives in `pyproject.toml`.
 - Keep PRs scoped. This repo is still plumbing: no training loops, no data dumps.
 - Do not commit `.env`, credentials, or personal data.
 
-CI on each pull request runs lint, format check, tests, and a secret scan. Those must pass, and a steward review is required before merge.
+CI on each pull request runs lint, format, type check, tests, and a secret scan. Those must pass, and a steward review is required before merge.

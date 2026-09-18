@@ -11,6 +11,7 @@ authors = [{ name = "The Dalanda Authors" }]
 dev = [
     "pytest>=8.0",
     "ruff>=0.6",
+    "mypy>=1.11",
 ]
 
 [build-system]
@@ -19,6 +20,9 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 include = ["dalanda*"]
+
+[tool.setuptools.package-data]
+dalanda = ["py.typed"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -32,3 +36,8 @@ select = ["E", "F", "I", "UP"]
 
 [tool.ruff.format]
 quote-style = "double"
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
+files = ["dalanda", "tests"]
