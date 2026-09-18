@@ -1,0 +1,3 @@
+# Dev tools scanned by pip-audit in CI. Runtime package has no third-party deps yet.
+pytest>=8.0
+ruff>=0.6
