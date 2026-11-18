@@ -72,6 +72,9 @@ def test_entry_must_be_a_mapping() -> None:
         ({"url": "ftp://example.org"}, "'url' must start with https://"),
         ({"licence_url": "https://u:p@example.org"}, "'licence_url' must not contain a user"),
         ({"credit": "amira@example.org"}, "display name, not an email"),
+        ({"licence": "unknown"}, "'licence' must be checked"),
+        ({"licence": " Not sure "}, "'licence' must be checked"),
+        ({"url": "https://example.org/d?token=abc"}, "must not be a signed link"),
     ],
 )
 def test_field_rules(overrides: dict[str, Any], expected: str) -> None:
@@ -97,6 +100,12 @@ def test_duplicates_by_id_url_and_name() -> None:
         ("https://example.org/a b", "must not contain spaces"),
         ("mailto:a@example.org", "must start with https:// or http://"),
         ("https://", "has no host name"),
+        (
+            "https://b.s3.amazonaws.com/f?X-Amz-Signature=ab&X-Amz-Expires=60",
+            "must not be a signed link or contain an access token",
+        ),
+        ("https://example.org/f?sig=ab", "must not be a signed link or contain an access token"),
+        ("https://example.org/search?q=token", None),
     ],
 )
 def test_url_problem(url: str, problem: str | None) -> None:

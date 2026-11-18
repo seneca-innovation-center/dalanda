@@ -9,7 +9,7 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 from typing import Any
-from urllib.parse import urlsplit, urlunsplit
+from urllib.parse import parse_qsl, urlsplit, urlunsplit
 
 import yaml
 
@@ -36,6 +36,22 @@ OPTIONAL = ("licence_url", "credit")
 ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 EMAIL_PATTERN = re.compile(r"[^@\s]+@[^@\s]+\.[^@\s]+")
 MAX_DESCRIPTION = 500
+# Licence values that mean nobody has checked it. The data policy rejects such sources.
+UNCLEAR_LICENCES = frozenset({"unknown", "unclear", "not sure", "tbd", "todo", "n/a", "none", "?"})
+# Query parameters that make a link private: signed URLs and access tokens.
+SIGNED_LINK_PARAMS = frozenset(
+    {
+        "x-amz-signature",
+        "x-amz-credential",
+        "x-amz-security-token",
+        "x-goog-signature",
+        "x-goog-credential",
+        "signature",
+        "sig",
+        "token",
+        "access_token",
+    }
+)
 
 
 class RegistryError(Exception):
@@ -98,6 +114,9 @@ def url_problem(url: str) -> str | None:
         return "has no host name"
     if parts.username or parts.password:
         return "must not contain a user name or password"
+    params = {key.lower() for key, _ in parse_qsl(parts.query, keep_blank_values=True)}
+    if params & SIGNED_LINK_PARAMS:
+        return "must not be a signed link or contain an access token"
     return None
 
 
@@ -149,8 +168,12 @@ def _check_text_fields(entry: dict[str, Any], where: str, problems: list[Problem
     if entry_id is not None and not ID_PATTERN.match(entry_id):
         problems.append(Problem(where, "'id' must be lowercase letters, digits and hyphens"))
 
-    for key in ("name", "provenance", "licence"):
+    for key in ("name", "provenance"):
         _text(entry, key, where, problems)
+
+    licence = _text(entry, "licence", where, problems)
+    if licence is not None and licence.strip().lower() in UNCLEAR_LICENCES:
+        problems.append(Problem(where, "'licence' must be checked before a source is accepted"))
 
     description = _text(entry, "description", where, problems)
     if description is not None and len(description) > MAX_DESCRIPTION:

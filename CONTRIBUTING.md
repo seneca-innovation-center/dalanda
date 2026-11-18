@@ -65,7 +65,7 @@ Then:
 3. Sign off every commit with `git commit -s`. This certifies the [Developer Certificate of Origin](https://developercertificate.org/). No CLA is required.
 4. Open a pull request using the template and link the issue it closes.
 
-Every pull request needs green CI (lint, type check, tests with at least 80% coverage, the registry check, secret scanning and the dependency audit) and an approval from a maintainer.
+Every pull request needs green CI (lint, type check, tests with at least 80% coverage, the registry check, secret scanning and the dependency audit) and an approval from a maintainer. Who the maintainers are and how they decide is in [ADR 0001](docs/adr/0001-open-source-community-model.md).
 
 Code style: Ruff formats and lints Python, and mypy runs in strict mode. The settings are in `pyproject.toml`.
 

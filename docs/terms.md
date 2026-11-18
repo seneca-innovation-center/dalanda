@@ -1,9 +1,9 @@
 # Terms of use
 
-Last updated: 2026-11-17 · Draft, not yet in effect
+Last updated: 2026-11-18 · Draft, not yet in effect
 
 <!--
-Before publishing, a steward must replace every [TBD: ...] placeholder and get a legal review.
+Before publishing, get a legal review (see ADR 0002, Consequences).
 -->
 
 These terms cover your use of the Dalanda website (the "service"), run by Seneca Innovation Center ("we", "us"). By creating an account or submitting a dataset link, you agree to them. Our [privacy policy](privacy-policy.md) explains how we handle your data.
@@ -12,7 +12,7 @@ The Dalanda **source code** in the public repository is licensed separately unde
 
 ## What Dalanda is
 
-Dalanda is a community project to build a language model for Tunisian Arabic (Derja). It is a research project, still in early development. On this site, contributors propose datasets by sharing links to them. Stewards review each one against the project's roadmap and its licence and provenance rules.
+Dalanda is a community project to build a language model for Tunisian Arabic (Derja). It is a research project, still in early development. On this site, contributors propose datasets by sharing links to them. Maintainers review each one against the project's roadmap and its licence and provenance rules.
 
 ## Your account
 
@@ -31,9 +31,15 @@ When you submit a link, you confirm that, to the best of your knowledge:
 
 Submitting a link does not give us or you any rights in the dataset. The dataset stays under its own licence, and the project will only use it as that licence allows.
 
-The text you write in a submission (description, licence notes, provenance notes) is licensed to the project under the [Apache License 2.0](../LICENSE), the same as other contributions. If a steward accepts the source, that text may be published in the project's public list of data sources.
+The text you write in a submission (description, licence notes, provenance notes) is licensed to Seneca Innovation Center and to everyone under the [Apache License 2.0](../LICENSE), the same as other contributions. This does not cover text you quote from the dataset's own licence or README, which stays under its original terms. If a maintainer accepts the source, your text may be published in the project's public list of data sources.
 
-Stewards may accept, reject, or later remove any submission, including if a rights holder or a person in the dataset objects. A rejection is not a judgement of you.
+If you delete your account, this licence on the text of accepted sources continues, so the public list stays complete. Your display name and the link to your account are removed, as the [privacy policy](privacy-policy.md) explains.
+
+Maintainers may accept, reject, or later remove any submission, including if a rights holder or a person in the dataset objects. A rejection is not a judgement of you. Rights holders and people who appear in a dataset can object by emailing [admin@seneca.center](mailto:admin@seneca.center).
+
+## Links to other sites
+
+Links point to third-party sites we don't control. We are not responsible for their content.
 
 ## Acceptable use
 
@@ -42,7 +48,7 @@ Do not use the service to:
 - break the law or help someone else break it;
 - submit links to datasets you know contain other people's sensitive personal data (health, religion, political views, private messages, contact details) without a lawful basis, or content that sexualises minors;
 - submit links to malware, phishing, or content unrelated to the project, or flood the service with spam submissions;
-- harass, threaten, or abuse anyone, including stewards and other contributors;
+- harass, threaten, or abuse anyone, including maintainers and other contributors;
 - attack, overload, or probe the service, get around rate limits, or access it with automated tools beyond normal use.
 
 We may limit, suspend, or close accounts that break these rules.
@@ -55,12 +61,12 @@ To the extent the law allows, we are not liable for any indirect or consequentia
 
 ## Changes to these terms
 
-We publish changes in the [public repository](https://github.com/seneca-innovation-center/dalanda/commits/main/docs/terms.md). For material changes we will tell signed-in users at least 14 days in advance. If you keep using the service after a change takes effect, the new terms apply.
+We publish changes in the [public repository](https://github.com/seneca-innovation-center/dalanda/commits/main/docs/terms.md) and update the date at the top. For material changes we will tell signed-in users at least 14 days in advance. If you keep using the service after a change takes effect, the new terms apply.
 
 ## Governing law
 
-These terms are governed by the laws of [TBD: jurisdiction, e.g. Tunisia], and disputes go to the courts of [TBD: city], unless the law of the country you live in gives you a right to bring a claim elsewhere.
+These terms are governed by the laws of Tunisia, and disputes go to the courts of Tunis, unless the law of the country you live in gives you a right to bring a claim elsewhere.
 
 ## Contact
 
-admin@seneca.center
+[admin@seneca.center](mailto:admin@seneca.center)

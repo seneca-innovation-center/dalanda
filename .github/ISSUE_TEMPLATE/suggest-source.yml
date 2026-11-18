@@ -6,6 +6,8 @@ body:
   - type: markdown
     attributes:
       value: |
+        **This issue is public. Don't include personal data or private links.**
+
         The easiest way to share a source is on [dalanda.ai](https://dalanda.ai). Use this form if you cannot.
         Share a **link** only. Do not attach files, scrapes or copies of a dataset.
         Read [what makes a good source](https://github.com/seneca-innovation-center/dalanda/blob/main/CONTRIBUTING.md#what-makes-a-good-source) first.

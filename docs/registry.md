@@ -16,16 +16,16 @@ Fixes to existing entries (a dead link, a wrong licence) are welcome as pull req
 | --- | --- | --- |
 | `id` | yes | Short unique name: lowercase letters, digits and hyphens, for example `tunisian-forum-archive`. |
 | `name` | yes | The source's name as its publisher writes it. |
-| `url` | yes | Public `https://` or `http://` link. No user names, passwords or access tokens. |
+| `url` | yes | Public `https://` or `http://` link. No user names, passwords, access tokens or signed links (`X-Amz-Signature=`, `token=`, `sig=` and similar). |
 | `type` | yes | One of `website`, `archive`, `dataset`, `repository`, `social-media`, `other`. |
-| `domains` | yes | What kind of text: one or more of `forum`, `news`, `subtitle`, `chat`, `literary`, `instruction`, `transcript`, `other`. |
+| `domains` | yes | What kind of text: one or more of `forum`, `news`, `subtitle`, `chat`, `literary`, `instruction`, `transcript`, `other`. `chat` means public chats only, such as open channels or public comment threads, never private messages or closed groups. |
 | `writing` | yes | How it is written: one or more of `arabic-script`, `arabizi`, `french-mixed`. |
 | `description` | yes | What is in it, in at most 500 characters. |
-| `licence` | yes | An SPDX identifier such as `CC-BY-4.0`, or a short description of the terms, or `unknown` while it is being checked. |
+| `licence` | yes | An SPDX identifier such as `CC-BY-4.0`, or a short description of the terms. It must be checked before the source is accepted, so `unknown`, `not sure` and similar values are rejected. |
 | `licence_url` | no | Link to the licence or terms of use. |
 | `provenance` | yes | Who published it, how it was collected, and whether it is public-only. |
 | `added` | yes | The date it was accepted, `YYYY-MM-DD`. |
-| `credit` | no | The display name of the contributor, if they asked to be credited. Never an email. |
+| `credit` | no | The display name of the contributor, if they asked to be credited. Never an email. Removing it later changes the current file only: earlier commits keep it (see the [privacy policy](privacy-policy.md#credit-in-the-public-list)). |
 
 Example:
 

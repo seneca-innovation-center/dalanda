@@ -90,6 +90,7 @@ uv run mypy
 - [docs/data-policy.md](docs/data-policy.md): what we collect, what we exclude, and how to ask for a link to be removed.
 - [docs/registry.md](docs/registry.md): the fields in each registry entry.
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): how a link gets from the website to the registry.
+- [docs/adr/](docs/adr/): decision records. [ADR 0001](docs/adr/0001-open-source-community-model.md) says who the maintainers are and how they decide; [ADR 0002](docs/adr/0002-privacy-retention-and-logging.md) sets the website's privacy, retention and logging rules.
 - [docs/privacy-policy.md](docs/privacy-policy.md) and [docs/terms.md](docs/terms.md): for the dalanda.ai website.
 - [SUPPORT.md](SUPPORT.md), [SECURITY.md](SECURITY.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), [CHANGELOG.md](CHANGELOG.md).
 
