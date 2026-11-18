@@ -5,7 +5,7 @@
 ## How entries are added
 
 1. A contributor shares a link on [dalanda.ai](https://dalanda.ai) and describes it: what type of source it is
-   and how it is written, and if they know them, its name, a short description and its licence.
+   and how it is written, and if they like, its name and a short description.
 2. A maintainer reviews it against the [data policy](data-policy.md) and accepts or declines it.
 3. The dalanda.ai admin Sync opens a pull request that adds the accepted links, built from what the
    contributor wrote. CI checks the entries, and a maintainer merges the pull request.
@@ -24,7 +24,7 @@ Fixes to existing entries (a dead link, a wrong licence) are welcome as pull req
 | `domains` | no | What kind of text: one or more of `forum`, `news`, `subtitle`, `chat`, `literary`, `instruction`, `transcript`, `other`. `chat` means public chats only, such as open channels or public comment threads, never private messages or closed groups. |
 | `writing` | no | How it is written: one or more of `arabic-script`, `arabizi`, `french-mixed`. |
 | `description` | no | What is in it, in at most 500 characters. |
-| `licence` | no | An SPDX identifier such as `CC-BY-4.0`, or a short description of the terms. Left out when nobody knows it: `unknown`, `not sure` and similar values are rejected. |
+| `licence` | no | An SPDX identifier such as `CC-BY-4.0`, or a short description of the terms, added by a maintainer when it is known. `unknown`, `not sure` and similar values are rejected. |
 | `licence_url` | no | Link to the licence or terms of use. |
 | `provenance` | no | Who published it, how it was collected, and whether it is public-only. |
 | `added` | yes | The date it was accepted, `YYYY-MM-DD`. |
