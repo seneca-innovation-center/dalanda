@@ -1,0 +1,4 @@
+# Approved sources of Tunisian Derja text. See docs/registry.md for every field.
+# Stewards add entries after a submission on dalanda.ai is reviewed and accepted.
+# CI checks the format, rejects duplicates and checks that each link resolves.
+sources: []

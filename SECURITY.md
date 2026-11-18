@@ -1,32 +1,34 @@
-# Security
+# Security policy
 
-Please do not open a public issue for a vulnerability.
+## Reporting a vulnerability
 
-## How to report
+Please do not report security problems in public GitHub issues.
 
-Use GitHub's [private vulnerability reporting](https://github.com/seneca-innovation-center/dalanda/security/advisories/new) on this repository.
+Report them privately through [GitHub private vulnerability reporting](https://github.com/seneca-innovation-center/dalanda/security/advisories/new), or by email to [admin@seneca.center](mailto:admin@seneca.center).
 
-Include:
+Please include:
 
-- what the issue is
-- how to reproduce it
-- versions or commit hashes if you have them
-- any workaround you already know
+- what the problem is and what someone could do with it;
+- how to reproduce it;
+- the commit, file or page affected;
+- a fix or workaround, if you know one.
 
-We will acknowledge the report and tell you how we plan to handle it.
+We acknowledge reports within 5 working days and tell you what we plan to do.
 
-## What is in scope
+## Scope
 
-This repository is still a public scaffold (docs, CI, contribution process). Reports about leaked secrets, unsafe GitHub workflows, dependency issues, or anything that could harm people who clone the repo are in scope.
+In scope:
 
-Model weights, training data, and hosted inference are not in this tree yet. When they appear, this file will say how to report problems with those too.
+- this repository: the registry checker, CI workflows, and anything that could harm people who clone or contribute to it;
+- the [dalanda.ai](https://dalanda.ai) website;
+- personal data that should not be in the [source registry](registry/sources.yaml).
+
+To ask for a source to be removed for rights or privacy reasons, follow the [data policy](docs/data-policy.md#ask-for-a-link-to-be-removed).
+
+## Supported versions
+
+Only the latest commit on `main` is supported.
 
 ## Secrets
 
-Never commit API keys, tokens, or `.env` files. Use `.env.example` as the template. CI runs Gitleaks on the full git history of every pull request. GitHub secret scanning and push protection are on. That does not replace careful review.
-
-Full history was scanned with Gitleaks on 2026-09-11 (all commits then on `main`). No secrets or API keys were found, so nothing to rotate. There is no Dockerfile or docker-compose in this repository; do not add credentials if those files land later.
-
-## Dependency scanning
-
-Dependabot is enabled for pip and GitHub Actions. CI also runs `pip-audit` on every pull request.
+Never commit API keys, tokens or `.env` files. CI scans the full git history with Gitleaks on every pull request.

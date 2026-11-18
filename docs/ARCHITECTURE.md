@@ -1,16 +1,40 @@
 # Architecture
 
-Dalanda’s product is a Tunisian Derja language model. This repository is not that model yet. It is the public layout the community will build into.
+Today Dalanda has two parts: the dalanda.ai website, where people share sources, and this repository, which holds the public record. The model pipeline does not exist yet. Its phases are described in the [roadmap](../ROADMAP.md).
 
 ```text
-dalanda/
-  dalanda/          Python package (version only, for now)
-  tests/            Placeholder tests so CI has something real to run
-  configs/          Shared config later (not a dataset)
-  docs/             Roadmap, ADRs, this file
-  .github/          CI, issue and PR templates, branch ruleset
+Contributor
+    │  shares a link (no files)
+    ▼
+dalanda.ai ──► maintainer review ──► accepted ──► registry/sources.yaml (this repo)
+                     │                                   │
+                     └─► rejected: not published         └─► CI: format, duplicates, links
 ```
 
-There is no API, no training loop, and nothing to self-host. When those land, they get their own docs and a new ADR.
+## Components
 
-Stewards set goals in [roadmap.md](roadmap.md). Review and licence rules are in [adr/0001-open-source-community-model.md](adr/0001-open-source-community-model.md).
+### dalanda.ai
+
+The website where contributors sign in with their email and submit a link with its details. It stores submissions while they wait for review. Its code is not in this repository. How it handles personal data is in the [privacy policy](privacy-policy.md).
+
+### Maintainer review
+
+A maintainer checks each submission against the [data policy](data-policy.md): language, licence, provenance and personal data. Accepted sources reach the registry through a pull request that the website's admin screen opens (its Sync button). A link the contributor did not allow to be shown is added with `link_withheld: true` and no `url`.
+
+### Source registry
+
+[registry/sources.yaml](../registry/sources.yaml) is the public list of accepted sources. Its fields are in [registry.md](registry.md).
+
+### Registry checker
+
+`src/dalanda_registry` is a small Python package that validates the registry file and checks its links. CI runs it on every pull request and once a week.
+
+| Module | Responsibility |
+| --- | --- |
+| `validate.py` | Loads the YAML, rejects repeated keys, checks fields and duplicates. |
+| `links.py` | Checks that each link still resolves. |
+| `cli.py` | The `dalanda-registry check` command. |
+
+## Later
+
+When processing, training and evaluation start, their code and docs will be added here with their own section in this file.
