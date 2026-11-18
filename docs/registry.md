@@ -4,9 +4,11 @@
 
 ## How entries are added
 
-1. A contributor shares a link on [dalanda.ai](https://dalanda.ai).
-2. A maintainer reviews it against the [data policy](data-policy.md).
-3. If it is accepted, a maintainer adds an entry in a pull request. CI checks the entry.
+1. A contributor shares a link on [dalanda.ai](https://dalanda.ai) and describes it: what type of source it is
+   and how it is written, and if they know them, its name, a short description and its licence.
+2. A maintainer reviews it against the [data policy](data-policy.md) and accepts or declines it.
+3. The dalanda.ai admin Sync opens a pull request that adds the accepted links, built from what the
+   contributor wrote. CI checks the entries, and a maintainer merges the pull request.
 
 Fixes to existing entries (a dead link, a wrong licence) are welcome as pull requests from anyone.
 
@@ -15,16 +17,16 @@ Fixes to existing entries (a dead link, a wrong licence) are welcome as pull req
 | Field | Required | What it holds |
 | --- | --- | --- |
 | `id` | yes | Short unique name: lowercase letters, digits and hyphens, for example `tunisian-forum-archive`. |
-| `name` | yes | The source's name as its publisher writes it. |
+| `name` | yes | The source's name, as the contributor gave it. Without one, the link's site and path, or `Private dataset` and a short id when the link is withheld. |
 | `url` | yes, unless withheld | `https://` or `http://` link. No user names, passwords, access tokens or signed links (`X-Amz-Signature=`, `token=`, `sig=` and similar). |
 | `link_withheld` | no | `true` when the contributor did not allow the link to be shown. The entry then has no `url`, and maintainers trace it to the private record by its `id`. |
 | `type` | yes | One of `website`, `archive`, `dataset`, `repository`, `social-media`, `other`. |
-| `domains` | yes | What kind of text: one or more of `forum`, `news`, `subtitle`, `chat`, `literary`, `instruction`, `transcript`, `other`. `chat` means public chats only, such as open channels or public comment threads, never private messages or closed groups. |
-| `writing` | yes | How it is written: one or more of `arabic-script`, `arabizi`, `french-mixed`. |
-| `description` | yes | What is in it, in at most 500 characters. |
-| `licence` | yes | An SPDX identifier such as `CC-BY-4.0`, or a short description of the terms. It must be checked before the source is accepted, so `unknown`, `not sure` and similar values are rejected. |
+| `domains` | no | What kind of text: one or more of `forum`, `news`, `subtitle`, `chat`, `literary`, `instruction`, `transcript`, `other`. `chat` means public chats only, such as open channels or public comment threads, never private messages or closed groups. |
+| `writing` | no | How it is written: one or more of `arabic-script`, `arabizi`, `french-mixed`. |
+| `description` | no | What is in it, in at most 500 characters. |
+| `licence` | no | An SPDX identifier such as `CC-BY-4.0`, or a short description of the terms. Left out when nobody knows it: `unknown`, `not sure` and similar values are rejected. |
 | `licence_url` | no | Link to the licence or terms of use. |
-| `provenance` | yes | Who published it, how it was collected, and whether it is public-only. |
+| `provenance` | no | Who published it, how it was collected, and whether it is public-only. |
 | `added` | yes | The date it was accepted, `YYYY-MM-DD`. |
 | `credit` | no | The display name of the contributor, if they asked to be credited. Never an email. Removing it later changes the current file only: earlier commits keep it (see the [privacy policy](privacy-policy.md#credit-in-the-public-list)). |
 
@@ -56,7 +58,7 @@ sources:
 `uv run dalanda-registry check --links` runs the same checks as CI:
 
 - the file is valid YAML with one top-level key, `sources`, and no repeated keys;
-- every entry has the required fields with allowed values;
+- every entry has the required fields (`id`, `name`, `type`, `added`), and every field it has uses allowed values;
 - every entry has a `url`, or `link_withheld: true` and no `url`;
 - no two entries share an `id`, a `name`, or a link (`http`/`https`, `www.` and a trailing `/` do not make a link different);
 - every `url` and `licence_url` resolves. A server that answers 401, 403 or 429 counts as resolving, because many sites refuse automated requests.

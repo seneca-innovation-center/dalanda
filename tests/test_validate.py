@@ -48,10 +48,21 @@ def test_empty_registry_is_valid() -> None:
 
 def test_missing_and_unknown_fields() -> None:
     bad = entry(email="x@example.org")
-    del bad["licence"]
+    del bad["type"]
     out = messages([bad])
-    assert any("missing ['licence']" in m for m in out)
+    assert any("missing ['type']" in m for m in out)
     assert any("unknown fields ['email']" in m for m in out)
+
+
+def test_only_id_name_type_and_added_are_required() -> None:
+    minimal = {
+        "id": "example-forum",
+        "name": "Example Forum",
+        "url": "https://forum.example.org/derja",
+        "type": "website",
+        "added": date(2026, 11, 18),
+    }
+    assert validate([minimal]) == []
 
 
 def test_link_withheld_entries() -> None:
@@ -83,8 +94,8 @@ def test_entry_must_be_a_mapping() -> None:
         ({"url": "ftp://example.org"}, "'url' must start with https://"),
         ({"licence_url": "https://u:p@example.org"}, "'licence_url' must not contain a user"),
         ({"credit": "amira@example.org"}, "display name, not an email"),
-        ({"licence": "unknown"}, "'licence' must be checked"),
-        ({"licence": " Not sure "}, "'licence' must be checked"),
+        ({"licence": "unknown"}, "'licence' must be a real licence"),
+        ({"licence": " Not sure "}, "'licence' must be a real licence"),
         ({"url": "https://example.org/d?token=abc"}, "must not be a signed link"),
     ],
 )
