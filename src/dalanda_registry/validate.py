@@ -22,7 +22,6 @@ WRITING = frozenset({"arabic-script", "arabizi", "french-mixed"})
 REQUIRED = (
     "id",
     "name",
-    "url",
     "type",
     "domains",
     "writing",
@@ -31,7 +30,7 @@ REQUIRED = (
     "provenance",
     "added",
 )
-OPTIONAL = ("licence_url", "credit")
+OPTIONAL = ("url", "link_withheld", "licence_url", "credit")
 
 ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 EMAIL_PATTERN = re.compile(r"[^@\s]+@[^@\s]+\.[^@\s]+")
@@ -161,6 +160,13 @@ def _check_keys(entry: dict[str, Any], where: str, problems: list[Problem]) -> N
     unknown = sorted(set(entry) - set(REQUIRED) - set(OPTIONAL))
     if unknown:
         problems.append(Problem(where, f"unknown fields {unknown}"))
+    withheld = entry.get("link_withheld", False)
+    if not isinstance(withheld, bool):
+        problems.append(Problem(where, "'link_withheld' must be true or false"))
+    elif withheld and "url" in entry:
+        problems.append(Problem(where, "an entry with 'link_withheld: true' must not have a 'url'"))
+    elif not withheld and "url" not in entry:
+        problems.append(Problem(where, "missing ['url'] (or set 'link_withheld: true')"))
 
 
 def _check_text_fields(entry: dict[str, Any], where: str, problems: list[Problem]) -> None:

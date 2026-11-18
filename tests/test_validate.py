@@ -54,6 +54,17 @@ def test_missing_and_unknown_fields() -> None:
     assert any("unknown fields ['email']" in m for m in out)
 
 
+def test_link_withheld_entries() -> None:
+    hidden = entry(link_withheld=True)
+    del hidden["url"]
+    assert validate([hidden]) == []
+    assert any("must not have a 'url'" in str(p) for p in validate([entry(link_withheld=True)]))
+    no_url = entry()
+    del no_url["url"]
+    assert any("set 'link_withheld: true'" in str(p) for p in validate([no_url]))
+    assert any("true or false" in str(p) for p in validate([entry(link_withheld="yes")]))
+
+
 def test_entry_must_be_a_mapping() -> None:
     assert messages(["just a string"]) == ["sources[0]: each entry must be a mapping of fields"]
 

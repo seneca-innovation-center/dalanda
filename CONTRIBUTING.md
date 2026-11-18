@@ -29,7 +29,7 @@ A good source:
 - **is mostly Derja.** Text in Modern Standard Arabic, or in Algerian, Moroccan or Libyan Arabic, is not what we need. A few MSA phrases inside Derja are fine.
 - **is written the way people write.** Arabic script, Arabizi and French mixed in are all welcome. Do not "fix" the spelling.
 - **has a clear licence or terms of use.** Open licences (such as Creative Commons or open-data licences) are best. If you are not sure, say so: we would rather know.
-- **is public.** No private groups, paywalled content, leaked data, or links that need a password or access token.
+- **is yours to share.** Public sources are best. A private dataset is welcome if you are allowed to share it and give us access; you can choose to keep its link out of the public registry. No leaked data, no content taken from behind a paywall or access control you were not given, and no passwords or access tokens inside the link.
 - **is not mainly about private people.** We do not want sources whose main content is personal details: phone numbers, ID numbers, addresses, health information, or private messages.
 - **is substantial.** A site with thousands of posts is worth more than one article. Small sources are still welcome if the text is rare, for example a regional variety.
 
@@ -39,7 +39,7 @@ See the [data policy](docs/data-policy.md) for exactly what we collect and exclu
 
 1. A maintainer checks the source against the list above: language, licence, provenance and personal data.
 2. The source is accepted, rejected, or held while we ask you a question. Rejected sources are not added anywhere.
-3. Accepted sources are added to the public [source registry](registry/sources.yaml), and CI checks every entry.
+3. Accepted sources are added to the public [source registry](registry/sources.yaml), and CI checks every entry. If the contributor chose not to show the link, the entry is listed without it.
 4. Each source keeps its own licence. The project only uses a source as its licence allows.
 
 Anyone can ask for a source to be removed later. The [data policy](docs/data-policy.md#ask-for-a-link-to-be-removed) explains how.

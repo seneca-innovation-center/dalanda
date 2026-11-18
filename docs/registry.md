@@ -16,7 +16,8 @@ Fixes to existing entries (a dead link, a wrong licence) are welcome as pull req
 | --- | --- | --- |
 | `id` | yes | Short unique name: lowercase letters, digits and hyphens, for example `tunisian-forum-archive`. |
 | `name` | yes | The source's name as its publisher writes it. |
-| `url` | yes | Public `https://` or `http://` link. No user names, passwords, access tokens or signed links (`X-Amz-Signature=`, `token=`, `sig=` and similar). |
+| `url` | yes, unless withheld | `https://` or `http://` link. No user names, passwords, access tokens or signed links (`X-Amz-Signature=`, `token=`, `sig=` and similar). |
+| `link_withheld` | no | `true` when the contributor did not allow the link to be shown. The entry then has no `url`, and maintainers trace it to the private record by its `id`. |
 | `type` | yes | One of `website`, `archive`, `dataset`, `repository`, `social-media`, `other`. |
 | `domains` | yes | What kind of text: one or more of `forum`, `news`, `subtitle`, `chat`, `literary`, `instruction`, `transcript`, `other`. `chat` means public chats only, such as open channels or public comment threads, never private messages or closed groups. |
 | `writing` | yes | How it is written: one or more of `arabic-script`, `arabizi`, `french-mixed`. |
@@ -56,6 +57,7 @@ sources:
 
 - the file is valid YAML with one top-level key, `sources`, and no repeated keys;
 - every entry has the required fields with allowed values;
+- every entry has a `url`, or `link_withheld: true` and no `url`;
 - no two entries share an `id`, a `name`, or a link (`http`/`https`, `www.` and a trailing `/` do not make a link different);
 - every `url` and `licence_url` resolves. A server that answers 401, 403 or 429 counts as resolving, because many sites refuse automated requests.
 

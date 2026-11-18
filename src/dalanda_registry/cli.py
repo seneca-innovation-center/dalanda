@@ -38,7 +38,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 1
 
     if args.links:
-        urls = [entry["url"] for entry in entries]
+        urls = [entry["url"] for entry in entries if "url" in entry]
         urls += [entry["licence_url"] for entry in entries if "licence_url" in entry]
         dead = check_links(urls)
         for url, reason in sorted(dead.items()):

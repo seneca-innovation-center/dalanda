@@ -19,7 +19,7 @@ The website where contributors sign in with their email and submit a link with i
 
 ### Maintainer review
 
-A maintainer checks each submission against the [data policy](data-policy.md): language, licence, provenance and personal data.
+A maintainer checks each submission against the [data policy](data-policy.md): language, licence, provenance and personal data. Accepted sources reach the registry through a pull request that the website's admin screen opens (its Sync button). A link the contributor did not allow to be shown is added with `link_withheld: true` and no `url`.
 
 ### Source registry
 

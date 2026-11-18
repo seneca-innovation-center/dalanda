@@ -27,11 +27,11 @@ Each phase is described in the [roadmap](ROADMAP.md).
 Right now the project needs one thing: places where Derja is written. You share a **link**, not files.
 
 1. Go to [dalanda.ai](https://dalanda.ai) and sign in with your email.
-2. Open the form to suggest a source and paste the link: a website, an archive, an open dataset, or a repository.
-3. Say what is in it: the kind of text (forum posts, news, subtitles, stories, and so on) and how it is written (Arabic script, Arabizi, mixed with French).
-4. Add what you know about its licence and where it comes from: who published it, and whether it is public.
-5. Submit. A maintainer reviews the source against the [data policy](docs/data-policy.md).
-6. If it is accepted, it is added to the public [source registry](registry/sources.yaml) so anyone can see what has been collected.
+2. Open the Contribute page and paste the link: a website, an archive, a dataset you found or collected yourself, or a repository. Public and private datasets are both welcome, as long as you are allowed to share them.
+3. Say how it is written (Arabic script, Arabizi, mixed with French).
+4. Optionally, add a short note: what is in it, its licence, where it comes from.
+5. Choose whether the link may be shown publicly, then submit. A maintainer reviews the source against the [data policy](docs/data-policy.md).
+6. If it is accepted, it is added to the public [source registry](registry/sources.yaml) so anyone can see what has been collected. If you chose not to show the link, the entry is listed without it.
 
 Not sure whether a source fits? [CONTRIBUTING.md](CONTRIBUTING.md) explains what makes a good source and lists the kinds of sources we are looking for. If you cannot use the website, open a [Suggest a source](https://github.com/seneca-innovation-center/dalanda/issues/new?template=suggest-source.yml) issue instead.
 

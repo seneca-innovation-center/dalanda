@@ -6,10 +6,12 @@ This page explains what Dalanda collects, what it leaves out, and how to ask for
 
 **Links, not data.** Contributors share links to places where Derja is written. With each link we keep:
 
-- the link and the source's name;
-- what kind of text it holds and how it is written (Arabic script, Arabizi, French mixed in);
-- its licence or terms of use;
-- where it comes from: who published it and how.
+- the link, and whether the contributor allows it to be shown publicly;
+- how the text is written (Arabic script, Arabizi, French mixed in);
+- an optional short note from the contributor;
+- after review: the source's name, what kind of text it holds, its licence or terms of use, and where it comes from.
+
+Public and private datasets are both accepted. By sharing a link, the contributor confirms they are allowed to share it and gives the project the right to access and use the dataset, as its licence allows. A private link the contributor did not allow to be shown is listed in the registry without the link.
 
 Accepted sources are listed in the public [source registry](../registry/sources.yaml). The fields are described in [registry.md](registry.md). The registry never holds contributor email addresses or account IDs. A contributor is credited only if they choose a display name. The registry is a public git file, so a removed name stays in its history; the [privacy policy](privacy-policy.md#credit-in-the-public-list) explains this.
 
@@ -19,7 +21,7 @@ When the processing phase opens (see the [roadmap](../ROADMAP.md)), text will be
 
 We do not accept, or we remove, sources that:
 
-- are not public: private groups or chats, paywalled content, or links that need a password or access token;
+- the contributor is not allowed to share, such as content taken from private groups or from behind a paywall or access control they were not given, or links with a password or access token inside them;
 - were obtained unlawfully, for example through a data breach or a leak;
 - have terms that forbid the use we would make of them, or an unclear licence we cannot resolve;
 - consist mainly of personal details: phone numbers, national ID numbers, addresses, health information, religious or political views, or private messages;
