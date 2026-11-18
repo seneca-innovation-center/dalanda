@@ -1,37 +1,80 @@
-# Contributing
+# Contributing to Dalanda
 
-The community builds. Stewards set goals and review. Read [ADR 0001](docs/adr/0001-open-source-community-model.md) and the [roadmap](docs/roadmap.md) before you open an issue. By participating you also agree to the [code of conduct](CODE_OF_CONDUCT.md).
+Thanks for helping build AI models for Tunisian Derja. Today the main way to contribute is to share links to Derja text. Model work comes later and will open as GitHub issues (see [what's coming](#whats-coming)).
 
-## How to propose work
+By taking part you agree to the [code of conduct](CODE_OF_CONDUCT.md).
 
-1. Open a scoped issue using **Contribution**, **Bug**, or **Data source**.
-2. Wait for steward feedback if the change is large or adds text or data-source claims.
-3. Fork, branch from `main`, and open a pull request.
-4. Sign off every commit (`git commit -s`) for the [DCO](https://developercertificate.org/).
-5. If the PR adds text, fill in licence and provenance on the PR template.
+## Share a source
 
-Do not open a PR that uploads a training corpus, weights, or a scrape.
+1. Sign in at [dalanda.ai](https://dalanda.ai) with your email.
+2. Paste the link and describe the source: what kind of text it holds, how it is written, its licence, and where it comes from.
+3. Submit it. A maintainer reviews it.
 
-## Local check (same as CI)
+You share a link only. Do not upload files, scrape a site, or send us a copy of a dataset.
+
+If you cannot use the website, open a [Suggest a source](https://github.com/seneca-innovation-center/dalanda/issues/new?template=suggest-source.yml) issue with the same details.
+
+## Wanted sources
+
+We welcome:
+
+- **Public sources:** websites, forums, blogs, news sites, archives, subtitle collections, and open datasets with Derja text.
+- **Data you collected yourself:** text you gathered and have the right to share, such as transcripts of your own recordings or a corpus you built. Publish it first with a licence (for example on Hugging Face, Zenodo or GitHub) and share that link. Tell us how you collected it and whether the people in it agreed.
+- **Related repositories and projects:** code, tools, papers or datasets about Tunisian or Derja language work, even if they are small or unfinished.
+
+## What makes a good source
+
+A good source:
+
+- **is mostly Derja.** Text in Modern Standard Arabic, or in Algerian, Moroccan or Libyan Arabic, is not what we need. A few MSA phrases inside Derja are fine.
+- **is written the way people write.** Arabic script, Arabizi and French mixed in are all welcome. Do not "fix" the spelling.
+- **has a clear licence or terms of use.** Open licences (such as Creative Commons or open-data licences) are best. If you are not sure, say so: we would rather know.
+- **is public.** No private groups, paywalled content, leaked data, or links that need a password or access token.
+- **is not mainly about private people.** We do not want sources whose main content is personal details: phone numbers, ID numbers, addresses, health information, or private messages.
+- **is substantial.** A site with thousands of posts is worth more than one article. Small sources are still welcome if the text is rare, for example a regional variety.
+
+See the [data policy](docs/data-policy.md) for exactly what we collect and exclude.
+
+## How review works
+
+1. A maintainer checks the source against the list above: language, licence, provenance and personal data.
+2. The source is accepted, rejected, or held while we ask you a question. Rejected sources are not added anywhere.
+3. Accepted sources are added to the public [source registry](registry/sources.yaml), and CI checks every entry.
+4. Each source keeps its own licence. The project only uses a source as its licence allows.
+
+Anyone can ask for a source to be removed later. The [data policy](docs/data-policy.md#ask-for-a-link-to-be-removed) explains how.
+
+## Improve this repository
+
+You can also fix the docs, report a dead link in the registry, or improve the registry checker.
 
 ```bash
-python3 -m venv .venv   # Python 3.9 or newer
-source .venv/bin/activate
-python -m pip install --upgrade pip
-pip install -e ".[dev]"
-ruff check .
-ruff format --check .
-mypy
-pytest -q
+git clone https://github.com/seneca-innovation-center/dalanda.git
+cd dalanda
+uv sync --extra dev
+uv run pytest
+uv run ruff check . && uv run ruff format --check .
+uv run mypy
+uv run dalanda-registry check
 ```
 
-To rewrite Python files to match the formatter, run `ruff format .`.
+Then:
 
-## Coding standards
+1. Create a branch, for example `docs/fix-roadmap-typo` or `registry/fix-dead-link`.
+2. Make your change and add or update tests if you changed code.
+3. Sign off every commit with `git commit -s`. This certifies the [Developer Certificate of Origin](https://developercertificate.org/). No CLA is required.
+4. Open a pull request using the template and link the issue it closes.
 
-- Python 3.9 or newer.
-- Lint and format with Ruff (`ruff check`, `ruff format`). Type-check with mypy. Config lives in `pyproject.toml`.
-- Keep PRs scoped. This repo is still plumbing: no training loops, no data dumps.
-- Do not commit `.env`, credentials, or personal data.
+Every pull request needs green CI (lint, type check, tests with at least 80% coverage, the registry check, secret scanning and the dependency audit) and an approval from a maintainer.
 
-CI on each pull request runs lint, format, type check, tests, and a secret scan. Those must pass, and a steward review is required before merge.
+Code style: Ruff formats and lints Python, and mypy runs in strict mode. The settings are in `pyproject.toml`.
+
+New registry entries come from accepted submissions on dalanda.ai, so please do not open a pull request that adds a new source. Corrections to existing entries are welcome.
+
+## What's coming
+
+Processing, training and evaluation are next (see the [roadmap](ROADMAP.md)). When each one opens, its tasks will be posted as issues labelled `phase: processing`, `phase: training` or `phase: evaluation`, with `good first issue` on the easier ones. Comment on an issue to take it, and a maintainer will assign it to you. Until then, sharing sources is the most useful thing you can do.
+
+## Questions
+
+Open a [GitHub issue](https://github.com/seneca-innovation-center/dalanda/issues/new/choose). For security problems, follow [SECURITY.md](SECURITY.md) instead.

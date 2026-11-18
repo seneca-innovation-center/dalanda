@@ -1,18 +1,17 @@
-## Summary
+## What and why
 
-<!-- What does this PR change, and why? Link the issue. -->
+<!-- What does this change, and why? Link the issue it closes, for example "Closes #12". -->
 
-## DCO
+## Kind of change
 
-- [ ] I certify that I wrote this, or have the right to submit it, and that it is offered under the Apache License 2.0. I agree to the [Developer Certificate of Origin](https://developercertificate.org/) and have signed off my commits (`git commit -s`).
+- [ ] Registry correction (dead link, wrong licence or details)
+- [ ] Documentation
+- [ ] Registry checker or CI
+- [ ] Other
 
-## Licence and provenance (if this PR adds text)
+## Checklist
 
-If this PR adds written material — docs, samples, prompts, dataset descriptions, comments that are not trivial code — complete this section. Otherwise check N/A.
-
-- [ ] N/A — this PR does not add text beyond code or trivial comments
-- [ ] I confirm the text is original or I have rights to contribute it under Apache-2.0, and I have documented provenance below (source, licence, and any restrictions)
-
-Provenance notes:
-
-<!-- Who wrote the text, where it came from, and under what licence. -->
+- [ ] My commits are signed off (`git commit -s`) under the [Developer Certificate of Origin](https://developercertificate.org/).
+- [ ] `uv run pytest`, `uv run ruff check .`, `uv run mypy` and `uv run dalanda-registry check` pass locally.
+- [ ] This pull request adds no files from a source: no text dumps, scrapes or datasets.
+- [ ] If I changed code, I added or updated tests.

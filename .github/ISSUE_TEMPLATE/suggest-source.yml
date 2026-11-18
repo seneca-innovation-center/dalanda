@@ -1,0 +1,65 @@
+name: Suggest a source
+description: Share a link to Derja text if you cannot use dalanda.ai. Links only, no files.
+title: "[Source]: "
+labels: ["source"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The easiest way to share a source is on [dalanda.ai](https://dalanda.ai). Use this form if you cannot.
+        Share a **link** only. Do not attach files, scrapes or copies of a dataset.
+        Read [what makes a good source](https://github.com/seneca-innovation-center/dalanda/blob/main/CONTRIBUTING.md#what-makes-a-good-source) first.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What are you sharing?
+      options:
+        - A public source (website, forum, archive, open dataset)
+        - Data I collected myself and published with a licence
+        - A related repository or project on Tunisian or Derja language work
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Source name
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Link
+      description: A public link. No passwords, access tokens or private share links.
+      placeholder: https://
+    validations:
+      required: true
+  - type: textarea
+    id: content
+    attributes:
+      label: What is in it?
+      description: Kind of text (forum posts, news, subtitles, stories, transcripts), how it is written (Arabic script, Arabizi, French mixed in), and roughly how much.
+    validations:
+      required: true
+  - type: textarea
+    id: licence
+    attributes:
+      label: Licence or terms of use
+      description: Name the licence and link it, or quote the terms. Write "not sure" if you do not know.
+    validations:
+      required: true
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Where does it come from?
+      description: Who published it, how it was collected, and whether it is all public.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirm
+      options:
+        - label: The link is public and I am not attaching any data.
+          required: true
+        - label: As far as I know, the source is not mainly made of people's personal details.
+          required: true

@@ -1,19 +1,25 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# Python
 .venv/
-venv/
 __pycache__/
 *.py[cod]
 *.egg-info/
+build/
+dist/
+
+# Tool caches and reports
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
 .coverage
 coverage.xml
 htmlcov/
-dist/
-build/
-*.egg
-.env
-.env.*
-!.env.example
-node_modules/
+
+# Editors and OS
+.vscode/
+.idea/
 .DS_Store

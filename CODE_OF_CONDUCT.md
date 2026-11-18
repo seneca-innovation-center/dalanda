@@ -59,11 +59,8 @@ representative at an online or offline event.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported to the community leaders responsible for enforcement by contacting the
-[Seneca Innovation Center organization owners](https://github.com/orgs/seneca-innovation-center/people)
-or, if the report should stay private, by opening a
-[private advisory](https://github.com/seneca-innovation-center/dalanda/security/advisories/new)
-and stating that it is a conduct report.
+reported to the community leaders responsible for enforcement at
+[admin@seneca.center](mailto:admin@seneca.center).
 
 All complaints will be reviewed and investigated promptly and fairly.
 
