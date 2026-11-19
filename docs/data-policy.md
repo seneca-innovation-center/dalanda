@@ -9,8 +9,8 @@ This page explains what Dalanda collects, what it leaves out, and how to ask for
 - the link, and whether the contributor allows it to be shown publicly;
 - the type of source (website, archive, dataset, repository, social media or other);
 - how the text is written (Arabic script, Arabizi, French mixed in);
-- optionally, the source's name and a short description from the contributor;
-- after review: its licence or terms of use and where it comes from, recorded by the maintainer who accepts it.
+- optionally, from the contributor: the source's name, a short description, what kind of text it holds, its licence and where it comes from (picked from lists), and whether they want to be credited by their display name;
+- after review: its licence or terms of use and where it comes from, checked and confirmed by the maintainer who accepts it.
 
 Public and private datasets are both accepted. By sharing a link, the contributor confirms they are allowed to share it and gives the project the right to access and use the dataset, as its licence allows. A private link the contributor did not allow to be shown is listed in the registry without the link.
 

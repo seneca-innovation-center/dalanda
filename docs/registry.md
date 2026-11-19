@@ -6,8 +6,8 @@
 
 1. A contributor shares a link on [dalanda.ai](https://dalanda.ai) and describes it: what type of source it is
    and how it is written, and if they like, its name and a short description.
-2. A maintainer reviews it against the [data policy](data-policy.md). To accept it, the maintainer records its
-   licence and provenance. A source whose licence cannot be resolved is declined.
+2. A maintainer reviews it against the [data policy](data-policy.md). To accept it, the maintainer checks, corrects
+   or records its licence and provenance. A source whose licence cannot be resolved is declined.
 3. The dalanda.ai admin Sync opens a pull request that adds the accepted links, built from what the
    contributor wrote and what the maintainer recorded. CI checks the entries, and a maintainer merges the pull
    request.
