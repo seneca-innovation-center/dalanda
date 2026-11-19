@@ -15,7 +15,7 @@ permissions: {}
 
 jobs:
   readiness:
-    uses: seneca-innovation-center/.github/.github/workflows/PUBLIC_READINESS.yml@8de08e0b0a65955455907d65598e0cd40c0a41ef # main
+    uses: seneca-innovation-center/.github/.github/workflows/PUBLIC_READINESS.yml@8de08e0b0a65955455907d65598e0cd40c0a41ef # main  # yamllint disable-line rule:line-length
     permissions:
       contents: read
       issues: read
