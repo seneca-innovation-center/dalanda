@@ -1,6 +1,6 @@
 # Privacy policy
 
-Last updated: 2026-11-18 · Draft, not yet in effect
+Last updated: 2026-11-19 · Draft, not yet in effect
 
 <!--
 Before publishing, legal review must confirm the INPDP declaration and transfer authorisation (see ADR 0002, Consequences).
@@ -16,13 +16,13 @@ Seneca Innovation Center
 5bis Rue Dag Hammarskjoeld, El Menzah 5
 Ariana 2091, Tunisia
 
-Contact: [admin@seneca.center](mailto:admin@seneca.center)
+Contact: [dalanda@seneca.center](mailto:dalanda@seneca.center)
 
 ## What we collect
 
 | Data | Where it comes from | Why we need it |
 | --- | --- | --- |
-| Email address and sign-in details | You, when you create an account. Handled by our sign-in provider, Clerk. | To create and secure your account and let you sign in. |
+| Email address, your name if you sign in with Google, and sign-in details | You, when you create an account. If you choose "Continue with Google", Google also sends Clerk your name and profile picture. Handled by our sign-in provider, Clerk. | To create and secure your account and let you sign in. |
 | Sign-in cookies, and the IP address and device information of each sign-in | Your browser, when you sign in. Set and stored by Clerk. | To keep you signed in, and to protect your account from misuse. |
 | Account ID | Created by Clerk when you sign up. | To link your chats and submissions to your account. |
 | Your chats | You, when you use the chat: your messages and the answers you get. | To answer you, and to show you your chat history. Used for training only if you opt in (see below). |
@@ -33,13 +33,13 @@ Contact: [admin@seneca.center](mailto:admin@seneca.center)
 | IP address | Your device, on every request. | To stop abuse through rate limiting. We do not store it as-is (see below). |
 | Basic technical records | Our servers. Request time, page or endpoint, status code, response time, error type, account ID. | To keep the service running and fix bugs. |
 
-The sign-in cookies are needed for the site to work. We do not use advertising trackers or analytics cookies, and we do not sell or rent personal data.
+The sign-in cookies are needed for the site to work. We also set one cookie of our own, `dalanda_lang`, which remembers your language for one year and holds only the language code. We do not use advertising trackers or analytics cookies, and we do not sell or rent personal data.
 
 ## The chat
 
 The chat is a demo. Its answers come from third-party AI models that we tested for Derja, not from a Dalanda model. To get an answer, the text of your messages is sent to the model provider through FreeLLM API (see "Who else processes your data"). Please do not type sensitive personal information, such as health details, passwords, or other people's contact details, into the chat.
 
-We store your chats so you can see your history. Messages about self-harm, distress or abuse get a fixed, caring reply instead of a model answer; to do that, each message is checked automatically, and nothing extra is stored about it.
+We store your chats so you can see your history. Messages about self-harm, distress or abuse get a fixed, caring reply instead of a model answer; to do that, each message is checked automatically by our own systems, and nothing extra is stored about it. Messages flagged by this check are never used for training.
 
 ### Training is opt-in
 
@@ -55,7 +55,7 @@ If a maintainer accepts the source, its record (name, description, licence, and 
 
 ### Credit in the public list
 
-If you choose a display name, it is shown next to the sources you shared in the [public source registry](https://github.com/seneca-innovation-center/dalanda/blob/main/registry/sources.yaml). The registry is a file in a public git repository. When you delete your account or ask us to remove your name, we remove it from the current registry within 24 hours. Earlier versions of the file stay in the repository's history, and copies made by others (for example forks) are outside our control. If you do not want that, do not choose a display name.
+If you choose a display name, it is shown next to the sources you shared in the [public source registry](https://github.com/seneca-innovation-center/dalanda/blob/main/registry/sources.md). The registry is a file in a public git repository. When you delete your account or ask us to remove your name, we remove it from the current registry within 24 hours. Earlier versions of the file stay in the repository's history, and copies made by others (for example forks) are outside our control. If you do not want that, do not choose a display name.
 
 ## How we handle IP addresses
 
@@ -86,22 +86,23 @@ Our application logs never contain the text of your chat messages, the text you 
 
 Datasets that contributors link to may include posts or other content written by people who never used this site. We reject sources that clearly contain sensitive personal data, such as health information, religious or political views, private messages, or contact details.
 
-If you think a source we use contains content about you, or content you wrote, email [admin@seneca.center](mailto:admin@seneca.center) with the source and what you want us to do. We will reply within 30 days. If we agree, we stop using that content in future work and update or remove the source record.
+If you think a source we use contains content about you, or content you wrote, email [dalanda@seneca.center](mailto:dalanda@seneca.center) with the source and what you want us to do. Some sources are listed without their link, at the contributor's request; you can name those by their name or description in the [public source registry](https://github.com/seneca-innovation-center/dalanda/blob/main/registry/sources.md). We will reply within 30 days. If we agree, we stop using that content in future work and update or remove the source record.
 
 Content that was already used to train a model cannot be removed from that model. It will be excluded from future versions.
 
 ## Who else processes your data
 
-We run our servers and database ourselves, on machines operated by Seneca Innovation Center. We also use a small number of service providers who process data for us under contract:
+We run the website, the API and the database ourselves, on a virtual server we rent from Amazon Web Services. We also use a small number of service providers who process data for us under contract:
 
-- **Clerk** (authentication): stores your email address, sign-in details, sign-in cookies, and the IP address and device information of each sign-in. See [Clerk's privacy policy](https://clerk.com/legal/privacy).
+- **Amazon Web Services** (hosting): runs the server that stores everything the site keeps (account ID, chats, usage records, training choice, submissions, display name, IP hashes and technical records). AWS provides the machine and the disk; it does not use the data. See [AWS's privacy notice](https://aws.amazon.com/privacy/).
+- **Clerk** (authentication): stores your email address, your name and profile picture if you sign in with Google, sign-in details, sign-in cookies, and the IP address and device information of each sign-in. See [Clerk's privacy policy](https://clerk.com/legal/privacy).
 - **FreeLLM API and the AI model providers it connects to** (chat answers): receive the text of your chat messages to generate answers. The models we use change as we test them; email us for the current list.
 
 We only share personal data beyond this if the law requires it. Accepted source records are public by design, as explained above.
 
 Dalanda is linked to Seneca Circle, the community run by Seneca Innovation Center where members are rewarded for contributing. The Dalanda site does not share your account, chat or submission data with Seneca Circle. If that changes, we will update this policy first.
 
-Your data may be processed outside Tunisia: Clerk processes data in the United States, and AI model providers may process chat messages in the United States and other countries.
+Your data may be processed outside Tunisia: our server runs in an Amazon Web Services data centre in the United States, Clerk processes data in the United States, and AI model providers may process chat messages in the United States and other countries.
 
 ## Your rights
 
@@ -114,7 +115,7 @@ Depending on where you live (for example under Tunisia's Organic Law No. 2004-63
 - object to or restrict how we use it;
 - complain to your data protection authority. In Tunisia that is the INPDP (Instance Nationale de Protection des Données Personnelles).
 
-To use any of these rights, email [admin@seneca.center](mailto:admin@seneca.center). We will reply within 30 days.
+To use any of these rights, email [dalanda@seneca.center](mailto:dalanda@seneca.center). We will reply within 30 days.
 
 ## Legal basis
 
@@ -138,4 +139,4 @@ We publish changes to this policy in the [public repository](https://github.com/
 
 ## Contact
 
-[admin@seneca.center](mailto:admin@seneca.center)
+[dalanda@seneca.center](mailto:dalanda@seneca.center)

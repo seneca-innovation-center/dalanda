@@ -39,7 +39,7 @@ See the [data policy](docs/data-policy.md) for exactly what we collect and exclu
 
 1. A maintainer checks the source against the list above: language, licence, provenance and personal data.
 2. The source is accepted, rejected, or held while we ask you a question. Rejected sources are not added anywhere.
-3. When accepting a source, the maintainer records its licence and provenance, if missing. Accepted sources are added to the public [source registry](registry/sources.yaml), and CI checks every entry. If the contributor chose not to show the link, the entry is listed without it.
+3. Accepted sources are added to the public [source registry](registry/sources.md), and CI checks every entry. If the contributor chose not to show the link, the entry is listed without it.
 4. Each source keeps its own licence. The project only uses a source as its licence allows.
 
 Anyone can ask for a source to be removed later. The [data policy](docs/data-policy.md#ask-for-a-link-to-be-removed) explains how.

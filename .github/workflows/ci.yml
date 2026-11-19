@@ -111,6 +111,8 @@ jobs:
           uv sync --locked
       - name: Format, duplicates and links
         run: uv run dalanda-registry check --links
+      - name: sources.md matches sources.yaml
+        run: uv run dalanda-registry render --check
 
   secrets:
     name: secrets

@@ -31,7 +31,7 @@ Right now the project needs one thing: places where Derja is written. You share 
 3. Say what type of source it is (website, archive, dataset, repository, social media or other) and how it is written (Arabic script, Arabizi, mixed with French).
 4. Optionally, give its name and a short description of what is in it. If you know its licence or where it comes from, say so in the description: it helps the maintainer check it.
 5. Choose whether the link may be shown publicly, then submit. A maintainer reviews the source against the [data policy](docs/data-policy.md).
-6. If it is accepted, it is added to the public [source registry](registry/sources.yaml) so anyone can see what has been collected. If you chose not to show the link, the entry is listed without it.
+6. If it is accepted, it is added to the public [source registry](registry/sources.md) so anyone can see what has been collected. If you chose not to show the link, the entry is listed without it.
 
 Not sure whether a source fits? [CONTRIBUTING.md](CONTRIBUTING.md) explains what makes a good source and lists the kinds of sources we are looking for. If you cannot use the website, open a [Suggest a source](https://github.com/seneca-innovation-center/dalanda/issues/new?template=suggest-source.yml) issue instead.
 
@@ -48,7 +48,7 @@ To pick one up, comment on the issue to say you are taking it. A maintainer assi
 Until then, you can:
 
 - share sources on [dalanda.ai](https://dalanda.ai);
-- check the [source registry](registry/sources.yaml) and report dead links or wrong details;
+- check the [source registry](registry/sources.md) and report dead links or wrong details;
 - point us to related projects on Tunisian or Derja language work;
 - report problems with this repository as a [bug](https://github.com/seneca-innovation-center/dalanda/issues/new?template=bug-report.yml).
 
@@ -69,6 +69,7 @@ Check the registry the same way CI does:
 ```bash
 uv run dalanda-registry check                # format and duplicates
 uv run dalanda-registry check --links        # also checks that every link resolves
+uv run dalanda-registry render               # rewrites registry/sources.md from sources.yaml
 ```
 
 ```text

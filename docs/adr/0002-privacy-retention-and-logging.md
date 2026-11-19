@@ -1,7 +1,7 @@
 # ADR 0002: Privacy, retention, and logging
 
-- Status: Proposed
-- Date: 2026-11-17 (updated 2026-11-18)
+- Status: Accepted
+- Date: 2026-11-17 (updated 2026-11-19)
 - Deciders: Raed Brahem, Amel Omri, Dalanda maintainers
 
 ## Context
@@ -18,7 +18,7 @@ That means the site and API handle five kinds of personal data:
 
 There is also data we do not collect but are close to: **the people who appear inside linked datasets**. Derja text is often scraped from social media, so a linked dataset can contain other people's posts and names.
 
-Everything runs on Seneca Innovation Center's own servers; there is no cloud hosting for now. Clerk (sign-in) and the model providers are the only outside processors.
+The website, API and database run on one EC2 instance that Seneca Innovation Center manages, in AWS us-west-2 (United States). AWS (hosting), Clerk (sign-in) and the model providers are the only outside processors. Vercel serves design previews only, with no keys and no user data.
 
 We are setting these rules before the site and API exist, so the first version is built to them. The public [privacy policy](../privacy-policy.md) and [terms](../terms.md) promise exactly what this ADR requires. If they ever disagree, fix the code or change all three documents in the same PR.
 
@@ -63,6 +63,7 @@ Third-party error trackers, if added later, must have request-body capture and I
 
 - The API rejects URLs that are not `https://` (or `http://`), and URLs with embedded credentials (`user:password@host`).
 - Links to private datasets are allowed, but the link itself must not carry secrets: the API rejects signed URLs and access-token query parameters, and the form says so.
+- **Access to private datasets never goes through the link or the form.** Maintainers ask for access through the hosting platform's own mechanism, for example a Hugging Face gated-access request, or the contributor adding a maintainer's account as a viewer or collaborator. Access stays tied to that maintainer account; no token, password or shared credential is stored in the database, the registry, or logs. If access cannot be given this way, the source is declined.
 - The submission stores whether the contributor allows the link to be shown publicly. A link that is not allowed is synced to the public registry with `link_withheld: true` and no URL; maintainers trace it by its registry `id`.
 - At submission time, the service may make one request to the URL to check it is reachable. It does **not** download or store the dataset. Any such fetch must block private, loopback, and link-local addresses (to prevent SSRF), follow a small number of redirects, and read headers only.
 - Downloading a dataset for processing happens later, only after a maintainer accepts the source, and only as its licence allows, as set by [ADR 0001](0001-open-source-community-model.md#data). Raw dumps are never committed to the repo.
@@ -73,6 +74,8 @@ Third-party error trackers, if added later, must have request-body capture and I
 - To answer, the API sends the conversation to the model provider through FreeLLM API. Nothing else about the user (email, IP, user ID) is sent.
 - Chats are used for training only with the user's **opt-in consent**. The consent is stored as a flag with the time it was given or withdrawn. Withdrawing consent excludes all of the user's chats from any training set built afterwards; chats already used in a trained model cannot be removed from it.
 - Usage records hold counts, lengths, model and cost, never message text.
+- **Model providers must not train on our users' chats.** Only providers and models whose terms say API inputs are not used for training (or that let us switch it off) are used. The check is recorded in the model test (DALANDA-26) for each model before it goes live. If a provider cannot meet this, it is not used, or the privacy policy says so before it goes live.
+- **Self-harm, distress and abuse check.** It runs inside our own backend, with no outside service. If an outside moderation service is ever used, it is named in the privacy policy first. Messages flagged by the check are never used for training, even if the user opted in.
 
 ### 6. Retention
 
@@ -108,7 +111,8 @@ Third-party error trackers, if added later, must have request-body capture and I
 
 ## Consequences
 
-- Before the submission form goes public, the API ticket(s) must implement: the HMAC hasher and rate-limit TTLs, URL validation (including signed-link rejection) and the SSRF-safe reachability check, the log redaction filter, the log-leak CI test, the retention purge job, the Clerk deletion webhook, the training-consent opt-in and opt-out, and the "show link publicly" flag in the registry sync.
+- Before the submission form goes public, the API ticket(s) must implement: the HMAC hasher and rate-limit TTLs, URL validation (including signed-link rejection) and the SSRF-safe reachability check, the log redaction filter, the log-leak CI test, the retention purge job, the Clerk deletion webhook, the training-consent opt-in and opt-out, and the "show link publicly" flag in the registry sync. The sync must also run `dalanda-registry render` and commit `registry/sources.md` with `sources.yaml`, or every sync PR fails CI.
 - Debugging is harder because logs never show what a user typed in the chat, what a contributor wrote, or the full link. That cost is accepted. Maintainers see the full submission in the review tool, not in logs.
+- **Pre-launch checks for the chat:** every model in use has a recorded "no training on inputs" check (see §5), and the self-harm check runs in our own backend. If either fails, the privacy policy must say so before the chat goes live.
 - Abuse investigation relies on the Clerk user ID; we cannot trace an IP across days by design.
 - **Legal review before launch.** Under Tunisian Organic Law 2004-63, Seneca Innovation Center may need to declare this processing to the INPDP, and may need its authorisation to transfer personal data abroad (Clerk processes data in the United States, and model providers may process chat text in the United States and elsewhere). Legal review must confirm both, and the policy's transfer section must be updated with the outcome, before the submission form goes public.

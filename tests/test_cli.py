@@ -67,3 +67,20 @@ def test_check_links_dead(
     monkeypatch.setattr(cli, "check_links", lambda urls: {urls[0]: "HTTP 404"})
     assert cli.main(["check", str(write(tmp_path, GOOD)), "--links"]) == 1
     assert "https://forum.example.org/derja: HTTP 404" in capsys.readouterr().err
+
+
+def test_render_writes_and_checks(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    path = write(tmp_path, GOOD)
+    page = tmp_path / "sources.md"
+    assert cli.main(["render", str(path), "--check"]) == 1
+    assert "out of date" in capsys.readouterr().err
+    assert cli.main(["render", str(path)]) == 0
+    assert "[Example Forum](https://forum.example.org/derja)" in page.read_text(encoding="utf-8")
+    assert cli.main(["render", str(path), "--check"]) == 0
+    assert "up to date" in capsys.readouterr().out
+
+
+def test_render_refuses_invalid_registry(tmp_path: Path) -> None:
+    path = write(tmp_path, GOOD.replace("type: website", "type: podcast"))
+    assert cli.main(["render", str(path)]) == 1
+    assert not (tmp_path / "sources.md").exists()
