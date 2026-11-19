@@ -13,7 +13,7 @@ This page explains what Dalanda collects, what it leaves out, and how to ask for
 
 Public and private datasets are both accepted. By sharing a link, the contributor confirms they are allowed to share it and gives the project the right to access and use the dataset, as its licence allows. A private link the contributor did not allow to be shown is listed in the registry without the link.
 
-Accepted sources are listed in the public [source registry](../registry/sources.yaml). The fields are described in [registry.md](registry.md). The registry never holds contributor email addresses or account IDs. A contributor is credited only if they choose a display name. The registry is a public git file, so a removed name stays in its history; the [privacy policy](privacy-policy.md#credit-in-the-public-list) explains this.
+Accepted sources are listed in the public [source registry](../registry/sources.md). The fields are described in [registry.md](registry.md). The registry never holds contributor email addresses or account IDs. A contributor is credited only if they choose a display name. The registry is a public git file, so a removed name stays in its history; the [privacy policy](privacy-policy.md#credit-in-the-public-list) explains this.
 
 When the processing phase opens (see the [roadmap](../ROADMAP.md)), text will be collected only from accepted sources and only as each source's licence allows. No source text or dataset copy is stored in this repository.
 
@@ -38,7 +38,7 @@ You can ask us to remove a source if:
 - it contains text you wrote or content about you;
 - you think it breaks this policy.
 
-Email [admin@seneca.center](mailto:admin@seneca.center) with the link and the reason. Please do not open a public issue when the request involves your personal information. If it does not, you can also open an issue in this repository.
+Email [dalanda@seneca.center](mailto:dalanda@seneca.center) with the link and the reason. Please do not open a public issue when the request involves your personal information. If it does not, you can also open an issue in this repository.
 
 We reply within 30 days. If we agree, we remove the source from the registry and exclude it, or the content about you, from every future build. A model trained before the removal cannot "unlearn" the text, but the next release will not include it.
 

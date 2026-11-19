@@ -1,6 +1,6 @@
 # Source registry
 
-[registry/sources.yaml](../registry/sources.yaml) lists every source that has been shared on dalanda.ai and accepted by a maintainer. It is public so anyone can see what Dalanda collects from, and check its licence and origin.
+[registry/sources.yaml](../registry/sources.yaml) is the data file: it lists every source that has been shared on dalanda.ai and accepted by a maintainer. It is public so anyone can see what Dalanda collects from, and check its licence and origin.
 
 ## How entries are added
 
@@ -50,6 +50,10 @@ sources:
 - Contributor email addresses, account IDs and anything else from the contributor's account.
 - Review notes and rejected submissions.
 - Any copy or sample of the source's text.
+
+## Readable page
+
+[registry/sources.md](../registry/sources.md) shows the same sources as a table. It is generated: after changing `sources.yaml`, run `uv run dalanda-registry render` and commit both files. CI fails if `sources.md` is out of date. Pull requests from the dalanda.ai Sync must include it too.
 
 ## Checks
 

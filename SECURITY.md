@@ -4,7 +4,7 @@
 
 Please do not report security problems in public GitHub issues.
 
-Report them privately through [GitHub private vulnerability reporting](https://github.com/seneca-innovation-center/dalanda/security/advisories/new), or by email to [admin@seneca.center](mailto:admin@seneca.center).
+Report them privately through [GitHub private vulnerability reporting](https://github.com/seneca-innovation-center/dalanda/security/advisories/new), or by email to [dalanda@seneca.center](mailto:dalanda@seneca.center).
 
 Please include:
 
@@ -21,7 +21,7 @@ In scope:
 
 - this repository: the registry checker, CI workflows, and anything that could harm people who clone or contribute to it;
 - the [dalanda.ai](https://dalanda.ai) website;
-- personal data that should not be in the [source registry](registry/sources.yaml).
+- personal data that should not be in the [source registry](registry/sources.md).
 
 To ask for a source to be removed for rights or privacy reasons, follow the [data policy](docs/data-policy.md#ask-for-a-link-to-be-removed).
 
