@@ -1,0 +1,31 @@
+# Runs the org-wide "Open Source Readiness" checks against this repository.
+# Manual only: Actions → Public Readiness → Run workflow.
+
+name: Public Readiness
+
+on:
+  workflow_dispatch:
+    inputs:
+      strict:
+        description: Fail the run on warnings as well as blockers
+        type: boolean
+        default: false
+
+permissions: {}
+
+jobs:
+  readiness:
+    uses: seneca-innovation-center/.github/.github/workflows/PUBLIC_READINESS.yml@8de08e0b0a65955455907d65598e0cd40c0a41ef # main
+    permissions:
+      contents: read
+      issues: read
+      actions: read
+      checks: read
+      pull-requests: read
+      security-events: write # only used when run-codeql + upload-sarif are on
+    with:
+      strict: ${{ inputs.strict }}
+    secrets:
+      # Optional fine-grained read-only PAT; without it some settings checks
+      # report "could not verify".
+      ADMIN_TOKEN: ${{ secrets.OSS_READINESS_ADMIN_TOKEN }}
