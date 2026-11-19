@@ -1,6 +1,6 @@
 # Privacy policy
 
-Last updated: 2026-11-18 · Draft, not yet in effect
+Last updated: 2026-11-19 · Draft, not yet in effect
 
 <!--
 Before publishing, legal review must confirm the INPDP declaration and transfer authorisation (see ADR 0002, Consequences).
@@ -39,7 +39,7 @@ The sign-in cookies are needed for the site to work. We do not use advertising t
 
 The chat is a demo. Its answers come from third-party AI models that we tested for Derja, not from a Dalanda model. To get an answer, the text of your messages is sent to the model provider through FreeLLM API (see "Who else processes your data"). Please do not type sensitive personal information, such as health details, passwords, or other people's contact details, into the chat.
 
-We store your chats so you can see your history. Messages about self-harm, distress or abuse get a fixed, caring reply instead of a model answer; to do that, each message is checked automatically, and nothing extra is stored about it.
+We store your chats so you can see your history. Messages about self-harm, distress or abuse get a fixed, caring reply instead of a model answer; to do that, each message is checked automatically by our own systems, and nothing extra is stored about it. Messages flagged by this check are never used for training.
 
 ### Training is opt-in
 
@@ -86,7 +86,7 @@ Our application logs never contain the text of your chat messages, the text you 
 
 Datasets that contributors link to may include posts or other content written by people who never used this site. We reject sources that clearly contain sensitive personal data, such as health information, religious or political views, private messages, or contact details.
 
-If you think a source we use contains content about you, or content you wrote, email [admin@seneca.center](mailto:admin@seneca.center) with the source and what you want us to do. We will reply within 30 days. If we agree, we stop using that content in future work and update or remove the source record.
+If you think a source we use contains content about you, or content you wrote, email [admin@seneca.center](mailto:admin@seneca.center) with the source and what you want us to do. Some sources are listed without their link, at the contributor's request; you can name those by their name or description in the [public source registry](https://github.com/seneca-innovation-center/dalanda/blob/main/registry/sources.yaml). We will reply within 30 days. If we agree, we stop using that content in future work and update or remove the source record.
 
 Content that was already used to train a model cannot be removed from that model. It will be excluded from future versions.
 
