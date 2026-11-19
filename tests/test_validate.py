@@ -48,20 +48,25 @@ def test_empty_registry_is_valid() -> None:
 
 def test_missing_and_unknown_fields() -> None:
     bad = entry(email="x@example.org")
-    del bad["type"]
+    del bad["licence"]
     out = messages([bad])
-    assert any("missing ['type']" in m for m in out)
+    assert any("missing ['licence']" in m for m in out)
     assert any("unknown fields ['email']" in m for m in out)
 
 
-def test_only_id_name_type_and_added_are_required() -> None:
-    minimal = {
-        "id": "example-forum",
-        "name": "Example Forum",
-        "url": "https://forum.example.org/derja",
-        "type": "website",
-        "added": date(2026, 11, 18),
-    }
+@pytest.mark.parametrize(
+    "field", ["id", "name", "type", "writing", "licence", "provenance", "added"]
+)
+def test_required_fields(field: str) -> None:
+    bad = entry()
+    del bad[field]
+    assert any(f"missing ['{field}']" in m for m in messages([bad]))
+
+
+def test_domains_and_description_are_optional() -> None:
+    minimal = entry()
+    del minimal["domains"]
+    del minimal["description"]
     assert validate([minimal]) == []
 
 
@@ -76,6 +81,14 @@ def test_link_withheld_entries() -> None:
     assert any("true or false" in str(p) for p in validate([entry(link_withheld="yes")]))
 
 
+def test_link_withheld_entries_need_a_description() -> None:
+    hidden = entry(link_withheld=True)
+    del hidden["url"]
+    del hidden["description"]
+    out = messages([hidden])
+    assert any("'link_withheld: true' needs a 'description'" in m for m in out), out
+
+
 def test_entry_must_be_a_mapping() -> None:
     assert messages(["just a string"]) == ["sources[0]: each entry must be a mapping of fields"]
 
@@ -87,6 +100,8 @@ def test_entry_must_be_a_mapping() -> None:
         ({"name": "  "}, "'name' must be non-empty text"),
         ({"description": "x" * 501}, "over 500 characters"),
         ({"type": "podcast"}, "'type' must be one of"),
+        ({"provenance": " "}, "'provenance' must be non-empty text"),
+        ({"writing": []}, "'writing' must be a non-empty list"),
         ({"domains": []}, "'domains' must be a non-empty list"),
         ({"domains": ["forum", "sports"]}, "unknown values ['sports']"),
         ({"writing": ["arabizi", "arabizi"]}, "lists a value twice"),
@@ -94,8 +109,8 @@ def test_entry_must_be_a_mapping() -> None:
         ({"url": "ftp://example.org"}, "'url' must start with https://"),
         ({"licence_url": "https://u:p@example.org"}, "'licence_url' must not contain a user"),
         ({"credit": "amira@example.org"}, "display name, not an email"),
-        ({"licence": "unknown"}, "'licence' must be a real licence"),
-        ({"licence": " Not sure "}, "'licence' must be a real licence"),
+        ({"licence": "unknown"}, "'licence' must be checked"),
+        ({"licence": " Not sure "}, "'licence' must be checked"),
         ({"url": "https://example.org/d?token=abc"}, "must not be a signed link"),
     ],
 )

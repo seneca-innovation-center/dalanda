@@ -28,8 +28,8 @@ Right now the project needs one thing: places where Derja is written. You share 
 
 1. Go to [dalanda.ai](https://dalanda.ai) and sign in with your email.
 2. Open the Contribute page and paste the link: a website, an archive, a dataset you found or collected yourself, or a repository. Public and private datasets are both welcome, as long as you are allowed to share them.
-3. Say how it is written (Arabic script, Arabizi, mixed with French).
-4. Optionally, add a short note: what is in it, its licence, where it comes from.
+3. Say what type of source it is (website, archive, dataset, repository, social media or other) and how it is written (Arabic script, Arabizi, mixed with French).
+4. Optionally, give its name and a short description of what is in it. If you know its licence or where it comes from, say so in the description: it helps the maintainer check it.
 5. Choose whether the link may be shown publicly, then submit. A maintainer reviews the source against the [data policy](docs/data-policy.md).
 6. If it is accepted, it is added to the public [source registry](registry/sources.yaml) so anyone can see what has been collected. If you chose not to show the link, the entry is listed without it.
 

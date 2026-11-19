@@ -7,7 +7,7 @@ By taking part you agree to the [code of conduct](CODE_OF_CONDUCT.md).
 ## Share a source
 
 1. Sign in at [dalanda.ai](https://dalanda.ai) with your email.
-2. Paste the link, say what type of source it is and how it is written, and add its name and a short description if you like.
+2. Paste the link, say what type of source it is and how it is written, and add its name and a short description if you like. If you know its licence or where it comes from, put it in the description.
 3. Submit it. A maintainer reviews it.
 
 You share a link only. Do not upload files, scrape a site, or send us a copy of a dataset.
@@ -39,7 +39,7 @@ See the [data policy](docs/data-policy.md) for exactly what we collect and exclu
 
 1. A maintainer checks the source against the list above: language, licence, provenance and personal data.
 2. The source is accepted, rejected, or held while we ask you a question. Rejected sources are not added anywhere.
-3. Accepted sources are added to the public [source registry](registry/sources.yaml), and CI checks every entry. If the contributor chose not to show the link, the entry is listed without it.
+3. When accepting a source, the maintainer records its licence and provenance. Accepted sources are added to the public [source registry](registry/sources.yaml), and CI checks every entry. If the contributor chose not to show the link, the entry is listed without it.
 4. Each source keeps its own licence. The project only uses a source as its licence allows.
 
 Anyone can ask for a source to be removed later. The [data policy](docs/data-policy.md#ask-for-a-link-to-be-removed) explains how.

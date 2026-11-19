@@ -19,20 +19,10 @@ DOMAINS = frozenset(
 )
 WRITING = frozenset({"arabic-script", "arabizi", "french-mixed"})
 
-# Contributors describe a source on dalanda.ai and maintainers only accept or decline it, so the
-# registry asks for what a contributor can know. The rest is optional, and checked when present.
-REQUIRED = ("id", "name", "type", "added")
-OPTIONAL = (
-    "url",
-    "link_withheld",
-    "domains",
-    "writing",
-    "description",
-    "licence",
-    "licence_url",
-    "provenance",
-    "credit",
-)
+# The contributor gives the type, how it is written and, optionally, a name and description. The
+# maintainer who accepts the source adds its licence and provenance (data policy, ADR 0001).
+REQUIRED = ("id", "name", "type", "writing", "licence", "provenance", "added")
+OPTIONAL = ("url", "link_withheld", "domains", "description", "licence_url", "credit")
 
 ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 EMAIL_PATTERN = re.compile(r"[^@\s]+@[^@\s]+\.[^@\s]+")
@@ -169,6 +159,10 @@ def _check_keys(entry: dict[str, Any], where: str, problems: list[Problem]) -> N
         problems.append(Problem(where, "an entry with 'link_withheld: true' must not have a 'url'"))
     elif not withheld and "url" not in entry:
         problems.append(Problem(where, "missing ['url'] (or set 'link_withheld: true')"))
+    # Without a link, the description is how the public recognises the source, for example to ask
+    # for its removal (data policy).
+    if withheld is True and "description" not in entry:
+        problems.append(Problem(where, "an entry with 'link_withheld: true' needs a 'description'"))
 
 
 def _check_text_fields(entry: dict[str, Any], where: str, problems: list[Problem]) -> None:
@@ -176,17 +170,12 @@ def _check_text_fields(entry: dict[str, Any], where: str, problems: list[Problem
     if entry_id is not None and not ID_PATTERN.match(entry_id):
         problems.append(Problem(where, "'id' must be lowercase letters, digits and hyphens"))
 
-    _text(entry, "name", where, problems)
-    if "provenance" in entry:
-        _text(entry, "provenance", where, problems)
+    for key in ("name", "provenance"):
+        _text(entry, key, where, problems)
 
-    # Optional: leave it out when nobody knows it. "unknown" and the like are refused, not stored.
-    if "licence" in entry:
-        licence = _text(entry, "licence", where, problems)
-        if licence is not None and licence.strip().lower() in UNCLEAR_LICENCES:
-            problems.append(
-                Problem(where, "'licence' must be a real licence; leave it out when unknown")
-            )
+    licence = _text(entry, "licence", where, problems)
+    if licence is not None and licence.strip().lower() in UNCLEAR_LICENCES:
+        problems.append(Problem(where, "'licence' must be checked before a source is accepted"))
 
     if "description" in entry:
         description = _text(entry, "description", where, problems)
@@ -212,9 +201,9 @@ def _check_urls(entry: dict[str, Any], where: str, problems: list[Problem]) -> N
 def _check_categories(entry: dict[str, Any], where: str, problems: list[Problem]) -> None:
     if entry.get("type") not in TYPES:
         problems.append(Problem(where, f"'type' must be one of {sorted(TYPES)}"))
-    for key, allowed in (("domains", DOMAINS), ("writing", WRITING)):
-        if key in entry:
-            _choices(entry, key, allowed, where, problems)
+    if "domains" in entry:
+        _choices(entry, "domains", DOMAINS, where, problems)
+    _choices(entry, "writing", WRITING, where, problems)
     if not isinstance(entry.get("added"), date):
         problems.append(Problem(where, "'added' must be a date like 2026-11-18"))
 
