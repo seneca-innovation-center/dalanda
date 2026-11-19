@@ -40,7 +40,7 @@ When you submit a link, you confirm that, to the best of your knowledge:
 
 By submitting a link, you give Seneca Innovation Center the right to access the dataset and use it for the Dalanda project, to the extent you are able to give that right. The dataset stays under its own licence, and the project will only use it as that licence allows. You choose whether the link may be shown publicly; if you say no, the source is listed without its link.
 
-The text you write in a submission (your optional note) is licensed to Seneca Innovation Center and to everyone under the [Apache License 2.0](../LICENSE), the same as other contributions. This does not cover text you quote from the dataset's own licence or README, which stays under its original terms. If a maintainer accepts the source, your text may be published in the project's public list of data sources.
+The text you write in a submission (the optional name and short description) is licensed to Seneca Innovation Center and to everyone under the [Apache License 2.0](../LICENSE), the same as other contributions. This does not cover text you quote from the dataset's own licence or README, which stays under its original terms. If a maintainer accepts the source, your text may be published in the project's public list of data sources.
 
 If you delete your account, this licence on the text of accepted sources continues, so the public list stays complete. Your display name and the link to your account are removed, as the [privacy policy](privacy-policy.md) explains.
 

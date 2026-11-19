@@ -54,6 +54,22 @@ def test_missing_and_unknown_fields() -> None:
     assert any("unknown fields ['email']" in m for m in out)
 
 
+@pytest.mark.parametrize(
+    "field", ["id", "name", "type", "writing", "licence", "provenance", "added"]
+)
+def test_required_fields(field: str) -> None:
+    bad = entry()
+    del bad[field]
+    assert any(f"missing ['{field}']" in m for m in messages([bad]))
+
+
+def test_domains_and_description_are_optional() -> None:
+    minimal = entry()
+    del minimal["domains"]
+    del minimal["description"]
+    assert validate([minimal]) == []
+
+
 def test_link_withheld_entries() -> None:
     hidden = entry(link_withheld=True)
     del hidden["url"]
@@ -63,6 +79,14 @@ def test_link_withheld_entries() -> None:
     del no_url["url"]
     assert any("set 'link_withheld: true'" in str(p) for p in validate([no_url]))
     assert any("true or false" in str(p) for p in validate([entry(link_withheld="yes")]))
+
+
+def test_link_withheld_entries_need_a_description() -> None:
+    hidden = entry(link_withheld=True)
+    del hidden["url"]
+    del hidden["description"]
+    out = messages([hidden])
+    assert any("'link_withheld: true' needs a 'description'" in m for m in out), out
 
 
 def test_entry_must_be_a_mapping() -> None:
@@ -76,6 +100,8 @@ def test_entry_must_be_a_mapping() -> None:
         ({"name": "  "}, "'name' must be non-empty text"),
         ({"description": "x" * 501}, "over 500 characters"),
         ({"type": "podcast"}, "'type' must be one of"),
+        ({"provenance": " "}, "'provenance' must be non-empty text"),
+        ({"writing": []}, "'writing' must be a non-empty list"),
         ({"domains": []}, "'domains' must be a non-empty list"),
         ({"domains": ["forum", "sports"]}, "unknown values ['sports']"),
         ({"writing": ["arabizi", "arabizi"]}, "lists a value twice"),

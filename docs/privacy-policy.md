@@ -28,7 +28,7 @@ Contact: [dalanda@seneca.center](mailto:dalanda@seneca.center)
 | Your chats | You, when you use the chat: your messages and the answers you get. | To answer you, and to show you your chat history. Used for training only if you opt in (see below). |
 | Usage records | Our servers, when you chat. Number of chats and messages, message length, model used, and cost. Never the text of a message. | To apply the free-use limits and keep the demo's costs under control. |
 | Your training choice | You, if you opt in to letting your chats help train Dalanda. | To know whether we may use your chats for training, and since when. |
-| Your submissions | You, when you share a dataset: the link, how it is written, an optional short note, and whether the link may be shown publicly. | So maintainers can review the dataset, and so accepted sources can be listed with their licence and origin. |
+| Your submissions | You, when you share a dataset: the link, the type of source, how it is written, optionally its name and a short description, and whether the link may be shown publicly. | So maintainers can review the dataset, and so accepted sources can be listed with their licence and origin. |
 | Display name (optional) | You, if you want credit for an accepted source. | To credit you publicly. We never publish your email address. |
 | IP address | Your device, on every request. | To stop abuse through rate limiting. We do not store it as-is (see below). |
 | Basic technical records | Our servers. Request time, page or endpoint, status code, response time, error type, account ID. | To keep the service running and fix bugs. |

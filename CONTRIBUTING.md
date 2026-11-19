@@ -7,7 +7,7 @@ By taking part you agree to the [code of conduct](CODE_OF_CONDUCT.md).
 ## Share a source
 
 1. Sign in at [dalanda.ai](https://dalanda.ai) with your email.
-2. Paste the link and describe the source: what kind of text it holds, how it is written, its licence, and where it comes from.
+2. Paste the link, say what type of source it is and how it is written, and add its name and a short description if you like. If you know its licence or where it comes from, put it in the description.
 3. Submit it. A maintainer reviews it.
 
 You share a link only. Do not upload files, scrape a site, or send us a copy of a dataset.

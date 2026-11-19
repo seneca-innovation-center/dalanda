@@ -19,18 +19,10 @@ DOMAINS = frozenset(
 )
 WRITING = frozenset({"arabic-script", "arabizi", "french-mixed"})
 
-REQUIRED = (
-    "id",
-    "name",
-    "type",
-    "domains",
-    "writing",
-    "description",
-    "licence",
-    "provenance",
-    "added",
-)
-OPTIONAL = ("url", "link_withheld", "licence_url", "credit")
+# The contributor gives the type, how it is written and, optionally, a name and description. The
+# maintainer who accepts the source adds its licence and provenance (data policy, ADR 0001).
+REQUIRED = ("id", "name", "type", "writing", "licence", "provenance", "added")
+OPTIONAL = ("url", "link_withheld", "domains", "description", "licence_url", "credit")
 
 ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 EMAIL_PATTERN = re.compile(r"[^@\s]+@[^@\s]+\.[^@\s]+")
@@ -167,6 +159,10 @@ def _check_keys(entry: dict[str, Any], where: str, problems: list[Problem]) -> N
         problems.append(Problem(where, "an entry with 'link_withheld: true' must not have a 'url'"))
     elif not withheld and "url" not in entry:
         problems.append(Problem(where, "missing ['url'] (or set 'link_withheld: true')"))
+    # Without a link, the description is how the public recognises the source, for example to ask
+    # for its removal (data policy).
+    if withheld is True and "description" not in entry:
+        problems.append(Problem(where, "an entry with 'link_withheld: true' needs a 'description'"))
 
 
 def _check_text_fields(entry: dict[str, Any], where: str, problems: list[Problem]) -> None:
@@ -181,9 +177,10 @@ def _check_text_fields(entry: dict[str, Any], where: str, problems: list[Problem
     if licence is not None and licence.strip().lower() in UNCLEAR_LICENCES:
         problems.append(Problem(where, "'licence' must be checked before a source is accepted"))
 
-    description = _text(entry, "description", where, problems)
-    if description is not None and len(description) > MAX_DESCRIPTION:
-        problems.append(Problem(where, f"'description' is over {MAX_DESCRIPTION} characters"))
+    if "description" in entry:
+        description = _text(entry, "description", where, problems)
+        if description is not None and len(description) > MAX_DESCRIPTION:
+            problems.append(Problem(where, f"'description' is over {MAX_DESCRIPTION} characters"))
 
     if "credit" in entry:
         credit = _text(entry, "credit", where, problems)
@@ -204,7 +201,8 @@ def _check_urls(entry: dict[str, Any], where: str, problems: list[Problem]) -> N
 def _check_categories(entry: dict[str, Any], where: str, problems: list[Problem]) -> None:
     if entry.get("type") not in TYPES:
         problems.append(Problem(where, f"'type' must be one of {sorted(TYPES)}"))
-    _choices(entry, "domains", DOMAINS, where, problems)
+    if "domains" in entry:
+        _choices(entry, "domains", DOMAINS, where, problems)
     _choices(entry, "writing", WRITING, where, problems)
     if not isinstance(entry.get("added"), date):
         problems.append(Problem(where, "'added' must be a date like 2026-11-18"))
