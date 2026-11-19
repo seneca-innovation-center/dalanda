@@ -38,7 +38,7 @@ You can ask us to remove a source if:
 - it contains text you wrote or content about you;
 - you think it breaks this policy.
 
-Email [admin@seneca.center](mailto:admin@seneca.center) with the link and the reason. Please do not open a public issue when the request involves your personal information. If it does not, you can also open an issue in this repository.
+Email [dalanda@seneca.center](mailto:dalanda@seneca.center) with the link and the reason. Please do not open a public issue when the request involves your personal information. If it does not, you can also open an issue in this repository.
 
 We reply within 30 days. If we agree, we remove the source from the registry and exclude it, or the content about you, from every future build. A model trained before the removal cannot "unlearn" the text, but the next release will not include it.
 

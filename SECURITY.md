@@ -4,7 +4,7 @@
 
 Please do not report security problems in public GitHub issues.
 
-Report them privately through [GitHub private vulnerability reporting](https://github.com/seneca-innovation-center/dalanda/security/advisories/new), or by email to [admin@seneca.center](mailto:admin@seneca.center).
+Report them privately through [GitHub private vulnerability reporting](https://github.com/seneca-innovation-center/dalanda/security/advisories/new), or by email to [dalanda@seneca.center](mailto:dalanda@seneca.center).
 
 Please include:
 

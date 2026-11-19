@@ -18,7 +18,7 @@ That means the site and API handle five kinds of personal data:
 
 There is also data we do not collect but are close to: **the people who appear inside linked datasets**. Derja text is often scraped from social media, so a linked dataset can contain other people's posts and names.
 
-Everything runs on Seneca Innovation Center's own servers; there is no cloud hosting for now. Clerk (sign-in) and the model providers are the only outside processors.
+The website, API and database run on one EC2 instance that Seneca Innovation Center manages, in AWS us-west-2 (United States). AWS (hosting), Clerk (sign-in) and the model providers are the only outside processors. Vercel serves design previews only, with no keys and no user data.
 
 We are setting these rules before the site and API exist, so the first version is built to them. The public [privacy policy](../privacy-policy.md) and [terms](../terms.md) promise exactly what this ADR requires. If they ever disagree, fix the code or change all three documents in the same PR.
 
@@ -111,7 +111,7 @@ Third-party error trackers, if added later, must have request-body capture and I
 
 ## Consequences
 
-- Before the submission form goes public, the API ticket(s) must implement: the HMAC hasher and rate-limit TTLs, URL validation (including signed-link rejection) and the SSRF-safe reachability check, the log redaction filter, the log-leak CI test, the retention purge job, the Clerk deletion webhook, the training-consent opt-in and opt-out, and the "show link publicly" flag in the registry sync.
+- Before the submission form goes public, the API ticket(s) must implement: the HMAC hasher and rate-limit TTLs, URL validation (including signed-link rejection) and the SSRF-safe reachability check, the log redaction filter, the log-leak CI test, the retention purge job, the Clerk deletion webhook, the training-consent opt-in and opt-out, and the "show link publicly" flag in the registry sync. The sync must also run `dalanda-registry render` and commit `registry/sources.md` with `sources.yaml`, or every sync PR fails CI.
 - Debugging is harder because logs never show what a user typed in the chat, what a contributor wrote, or the full link. That cost is accepted. Maintainers see the full submission in the review tool, not in logs.
 - **Pre-launch checks for the chat:** every model in use has a recorded "no training on inputs" check (see §5), and the self-harm check runs in our own backend. If either fails, the privacy policy must say so before the chat goes live.
 - Abuse investigation relies on the Clerk user ID; we cannot trace an IP across days by design.

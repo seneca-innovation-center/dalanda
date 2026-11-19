@@ -1,6 +1,6 @@
 # Terms of use
 
-Last updated: 2026-11-18 · Draft, not yet in effect
+Last updated: 2026-11-19 · Draft, not yet in effect
 
 <!--
 Before publishing, get a legal review (see ADR 0002, Consequences).
@@ -44,7 +44,7 @@ The text you write in a submission (your optional note) is licensed to Seneca In
 
 If you delete your account, this licence on the text of accepted sources continues, so the public list stays complete. Your display name and the link to your account are removed, as the [privacy policy](privacy-policy.md) explains.
 
-Maintainers may accept, reject, or later remove any submission, including if a rights holder or a person in the dataset objects. A rejection is not a judgement of you. Rights holders and people who appear in a dataset can object by emailing [admin@seneca.center](mailto:admin@seneca.center).
+Maintainers may accept, reject, or later remove any submission, including if a rights holder or a person in the dataset objects. A rejection is not a judgement of you. Rights holders and people who appear in a dataset can object by emailing [dalanda@seneca.center](mailto:dalanda@seneca.center).
 
 ## Links to other sites
 
@@ -79,4 +79,4 @@ These terms are governed by the laws of Tunisia, and disputes go to the courts o
 
 ## Contact
 
-[admin@seneca.center](mailto:admin@seneca.center)
+[dalanda@seneca.center](mailto:dalanda@seneca.center)
