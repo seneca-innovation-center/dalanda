@@ -55,7 +55,7 @@ If a maintainer accepts the source, its record (name, description, licence, and 
 
 ### Credit in the public list
 
-If you choose a display name, it is shown next to the sources you shared in the [public source registry](https://github.com/seneca-innovation-center/dalanda/blob/main/registry/sources.yaml). The registry is a file in a public git repository. When you delete your account or ask us to remove your name, we remove it from the current registry within 24 hours. Earlier versions of the file stay in the repository's history, and copies made by others (for example forks) are outside our control. If you do not want that, do not choose a display name.
+If you choose a display name, it is shown next to the sources you shared in the [public source registry](https://github.com/seneca-innovation-center/dalanda/blob/main/registry/sources.md). The registry is a file in a public git repository. When you delete your account or ask us to remove your name, we remove it from the current registry within 24 hours. Earlier versions of the file stay in the repository's history, and copies made by others (for example forks) are outside our control. If you do not want that, do not choose a display name.
 
 ## How we handle IP addresses
 
@@ -86,7 +86,7 @@ Our application logs never contain the text of your chat messages, the text you 
 
 Datasets that contributors link to may include posts or other content written by people who never used this site. We reject sources that clearly contain sensitive personal data, such as health information, religious or political views, private messages, or contact details.
 
-If you think a source we use contains content about you, or content you wrote, email [admin@seneca.center](mailto:admin@seneca.center) with the source and what you want us to do. Some sources are listed without their link, at the contributor's request; you can name those by their name or description in the [public source registry](https://github.com/seneca-innovation-center/dalanda/blob/main/registry/sources.yaml). We will reply within 30 days. If we agree, we stop using that content in future work and update or remove the source record.
+If you think a source we use contains content about you, or content you wrote, email [admin@seneca.center](mailto:admin@seneca.center) with the source and what you want us to do. Some sources are listed without their link, at the contributor's request; you can name those by their name or description in the [public source registry](https://github.com/seneca-innovation-center/dalanda/blob/main/registry/sources.md). We will reply within 30 days. If we agree, we stop using that content in future work and update or remove the source record.
 
 Content that was already used to train a model cannot be removed from that model. It will be excluded from future versions.
 

@@ -21,7 +21,7 @@ In scope:
 
 - this repository: the registry checker, CI workflows, and anything that could harm people who clone or contribute to it;
 - the [dalanda.ai](https://dalanda.ai) website;
-- personal data that should not be in the [source registry](registry/sources.yaml).
+- personal data that should not be in the [source registry](registry/sources.md).
 
 To ask for a source to be removed for rights or privacy reasons, follow the [data policy](docs/data-policy.md#ask-for-a-link-to-be-removed).
 
