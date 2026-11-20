@@ -19,4 +19,5 @@ All notable changes to this repository are listed here. The format follows [Keep
 ### Changed
 
 - Registry entries match the dalanda.ai contribute form: `domains` and `description` are optional, except that an entry with a withheld link needs a `description`. `licence` and `provenance` stay required and are recorded by the maintainer who accepts the source. The README, contributing guide, data policy and privacy policy describe the form's fields.
-- The dalanda.ai contribute form also asks, optionally, what kind of text a source holds, its licence and where it comes from (picked from lists, so no free text), and whether the contributor wants to be credited by their display name. The maintainer still checks and confirms the licence and provenance.
+- The dalanda.ai contribute form also asks, optionally, what kind of text a source holds, its licence and where it comes from (picked from lists, so no free text), and whether the contributor wants to be credited by their account's display name. The maintainer still checks and confirms the licence and provenance.
+- Privacy policy: credit uses the account's display name and is shown only if the contributor ticks "Credit me in the public list". The policy now also lists the language choice saved with the account and with submissions.
