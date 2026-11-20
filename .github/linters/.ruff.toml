@@ -1,0 +1,10 @@
+# Super-Linter reads this file instead of pyproject.toml; keep it in sync with [tool.ruff].
+cache-dir = "/tmp/.ruff_cache"
+line-length = 100
+target-version = "py311"
+
+[lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[lint.isort]
+known-first-party = ["dalanda_registry"]

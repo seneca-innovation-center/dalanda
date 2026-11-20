@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Share a source on dalanda.ai
+    url: https://dalanda.ai
+    about: The main way to suggest Derja text sources. Sign in and paste the link.
+  - name: Ask for a source to be removed
+    url: https://github.com/seneca-innovation-center/dalanda/blob/main/docs/data-policy.md#ask-for-a-link-to-be-removed
+    about: For rights or privacy requests. Email us instead of opening a public issue.
+  - name: Report a security problem
+    url: https://github.com/seneca-innovation-center/dalanda/security/advisories/new
+    about: Report privately. Please do not open a public issue.

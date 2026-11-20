@@ -1,0 +1,5 @@
+[codespell]
+check-hidden =
+skip = package-lock.json,*/package-lock.json,*.log,.git,uv.lock
+# Personal names
+ignore-words-list = raed
