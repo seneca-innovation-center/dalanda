@@ -159,3 +159,21 @@ jobs:
           uv export --locked --all-extras --no-emit-project --no-hashes \
             --format requirements-txt > "$RUNNER_TEMP/requirements.txt"
           pip-audit --strict --no-deps --disable-pip -r "$RUNNER_TEMP/requirements.txt"
+
+  # One stable status check for the org's default-branch ruleset, which
+  # requires "CI" whatever the job names above become.
+  ci:
+    name: CI
+    if: always()
+    needs: [lint, typecheck, test, registry, secrets, dependencies]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: All jobs passed
+        env:
+          RESULTS: ${{ join(needs.*.result, ' ') }}
+        run: |
+          for r in $RESULTS; do
+            [ "$r" = success ] || { echo "::error::A required job finished with: $r"; exit 1; }
+          done
