@@ -1,6 +1,6 @@
 # Privacy policy
 
-Last updated: 2026-11-19 · Draft, not yet in effect
+Last updated: 2026-11-24 · Draft, not yet in effect
 
 <!--
 Before publishing, legal review must confirm the INPDP declaration and transfer authorisation (see ADR 0002, Consequences).
@@ -22,14 +22,15 @@ Contact: [dalanda@seneca.center](mailto:dalanda@seneca.center)
 
 | Data | Where it comes from | Why we need it |
 | --- | --- | --- |
-| Email address, your name if you sign in with Google, and sign-in details | You, when you create an account. If you choose "Continue with Google", Google also sends Clerk your name and profile picture. Handled by our sign-in provider, Clerk. | To create and secure your account and let you sign in. |
+| Email address, your name if you give one, and sign-in details | You, when you create an account. Your name is optional when you sign up with an email address. If you choose "Continue with Google", Google also sends Clerk your name and profile picture. Handled by our sign-in provider, Clerk. | To create and secure your account and let you sign in. |
 | Sign-in cookies, and the IP address and device information of each sign-in | Your browser, when you sign in. Set and stored by Clerk. | To keep you signed in, and to protect your account from misuse. |
 | Account ID | Created by Clerk when you sign up. | To link your chats and submissions to your account. |
 | Your chats | You, when you use the chat: your messages and the answers you get. | To answer you, and to show you your chat history. Used for training only if you opt in (see below). |
 | Usage records | Our servers, when you chat. Number of chats and messages, message length, model used, and cost. Never the text of a message. | To apply the free-use limits and keep the demo's costs under control. |
 | Your training choice | You, if you opt in to letting your chats help train Dalanda. | To know whether we may use your chats for training, and since when. |
-| Your submissions | You, when you share a dataset: the link, the type of source, how it is written, optionally its name and a short description, and whether the link may be shown publicly. | So maintainers can review the dataset, and so accepted sources can be listed with their licence and origin. |
-| Display name (optional) | You, if you want credit for an accepted source. | To credit you publicly. We never publish your email address. |
+| Your submissions | You, when you share a dataset: the link, the type of source, how it is written, optionally its name, a short description, what kind of text it holds, its licence and where it comes from, whether the link may be shown publicly, and whether you want to be credited. | So maintainers can review the dataset, and so accepted sources can be listed with their licence and origin. |
+| Display name (optional) | Your account's name: the one you gave when you signed up or added to your profile later, or your Google name if you signed in with Google. Shown only if you tick "Credit me in the public list" when you share a dataset. If your account has no name, you cannot ask for credit until you add one. | To credit you publicly. We never publish your email address. |
+| Your language choice | You, when you pick the site language. | Kept in a cookie so the site shows your language (see below), and saved with each dataset you share so maintainers know which language you used. |
 | IP address | Your device, on every request. | To stop abuse through rate limiting. We do not store it as-is (see below). |
 | Basic technical records | Our servers. Request time, page or endpoint, status code, response time, error type, account ID. | To keep the service running and fix bugs. |
 
@@ -55,7 +56,7 @@ If a maintainer accepts the source, its record (name, description, licence, and 
 
 ### Credit in the public list
 
-If you choose a display name, it is shown next to the sources you shared in the [public source registry](https://github.com/seneca-innovation-center/dalanda/blob/main/registry/sources.md). The registry is a file in a public git repository. When you delete your account or ask us to remove your name, we remove it from the current registry within 24 hours. Earlier versions of the file stay in the repository's history, and copies made by others (for example forks) are outside our control. If you do not want that, do not choose a display name.
+Credit needs a name on your account. If your account has none, the "Credit me in the public list" box is not available until you add a name to your profile. If you tick it when you share a dataset, your account's display name is shown next to the sources you shared in the [public source registry](https://github.com/seneca-innovation-center/dalanda/blob/main/registry/sources.md). The registry is a file in a public git repository. When you delete your account or ask us to remove your name, we remove it from the current registry within 24 hours. Earlier versions of the file stay in the repository's history, and copies made by others (for example forks) are outside our control. If you do not want that, leave the box unticked.
 
 ## How we handle IP addresses
 
@@ -94,8 +95,8 @@ Content that was already used to train a model cannot be removed from that model
 
 We run the website, the API and the database ourselves, on a virtual server we rent from Amazon Web Services. We also use a small number of service providers who process data for us under contract:
 
-- **Amazon Web Services** (hosting): runs the server that stores everything the site keeps (account ID, chats, usage records, training choice, submissions, display name, IP hashes and technical records). AWS provides the machine and the disk; it does not use the data. See [AWS's privacy notice](https://aws.amazon.com/privacy/).
-- **Clerk** (authentication): stores your email address, your name and profile picture if you sign in with Google, sign-in details, sign-in cookies, and the IP address and device information of each sign-in. See [Clerk's privacy policy](https://clerk.com/legal/privacy).
+- **Amazon Web Services** (hosting): runs the server that stores everything the site keeps (account ID, chats, usage records, training choice, language choice, submissions, display name, IP hashes and technical records). AWS provides the machine and the disk; it does not use the data. See [AWS's privacy notice](https://aws.amazon.com/privacy/).
+- **Clerk** (authentication): stores your email address, your name if you give one, your profile picture if you sign in with Google, sign-in details, sign-in cookies, and the IP address and device information of each sign-in. See [Clerk's privacy policy](https://clerk.com/legal/privacy).
 - **FreeLLM API and the AI model providers it connects to** (chat answers): receive the text of your chat messages to generate answers. The models we use change as we test them; email us for the current list.
 
 We only share personal data beyond this if the law requires it. Accepted source records are public by design, as explained above.
