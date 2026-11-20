@@ -1,3 +1,5 @@
+<!-- markdownlint-disable-file MD041 -->
+
 ## What and why
 
 <!-- What does this change, and why? Link the issue it closes, for example "Closes #12". -->

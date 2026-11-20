@@ -1,5 +1,7 @@
 # SPDX-FileCopyrightText: 2026 Seneca Innovation Center
 # SPDX-License-Identifier: Apache-2.0
+"""Tests for the `dalanda-registry` command line."""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -8,6 +10,7 @@ import pytest
 
 from dalanda_registry import cli
 
+# editorconfig-checker-disable
 GOOD = """\
 sources:
   - id: example-forum
@@ -22,9 +25,11 @@ sources:
     provenance: Published by the forum owners.
     added: 2026-11-18
 """
+# editorconfig-checker-enable
 
 
 def write(tmp_path: Path, text: str) -> Path:
+    """Write a registry file into tmp_path and return its path."""
     path = tmp_path / "sources.yaml"
     path.write_text(text, encoding="utf-8")
     return path

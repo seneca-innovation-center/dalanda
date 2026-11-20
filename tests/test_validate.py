@@ -1,5 +1,7 @@
 # SPDX-FileCopyrightText: 2026 Seneca Innovation Center
 # SPDX-License-Identifier: Apache-2.0
+"""Tests for registry entry validation."""
+
 from __future__ import annotations
 
 from datetime import date
@@ -18,6 +20,7 @@ from dalanda_registry.validate import (
 
 
 def entry(**overrides: Any) -> dict[str, Any]:
+    """Return a valid registry entry, with the given fields replaced."""
     base: dict[str, Any] = {
         "id": "example-forum",
         "name": "Example Forum",
@@ -35,6 +38,7 @@ def entry(**overrides: Any) -> dict[str, Any]:
 
 
 def messages(entries: list[Any]) -> list[str]:
+    """Validate entries and return the problems as strings."""
     return [str(p) for p in validate(entries)]
 
 

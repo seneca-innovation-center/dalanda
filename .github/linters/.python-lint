@@ -1,0 +1,21 @@
+[MAIN]
+jobs = 0
+
+[BASIC]
+# Test names describe the behaviour under test; they don't need docstrings.
+no-docstring-rgx = ^(_|test_)
+
+[DESIGN]
+# Frozen dataclasses and fakes legitimately have no public methods.
+min-public-methods = 0
+# Subclasses of PyYAML loaders inherit a deep hierarchy we don't control.
+max-parents = 12
+
+[MESSAGES CONTROL]
+# Super-Linter does not install project dependencies.
+# `assert result == []` gives clearer pytest failure output than `assert not result`.
+disable =
+    import-error,
+    use-implicit-booleaness-not-comparison,
+    # Ruff enforces line length (E501) with the project's own rules.
+    line-too-long

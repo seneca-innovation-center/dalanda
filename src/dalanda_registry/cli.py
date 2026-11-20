@@ -84,6 +84,7 @@ def _render(path: Path, check_only: bool) -> int:
 
 
 def main(argv: Sequence[str] | None = None) -> int:
+    """Run the command line and return the process exit code."""
     args = _parser().parse_args(argv)
     if args.command == "render":
         return _render(args.path, args.check)

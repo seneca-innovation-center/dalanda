@@ -39,7 +39,7 @@ We are setting these rules before the site and API exist, so the first version i
 
 ### 3. Logs contain no chat text, no submission text and no raw IPs
 
-Application logs may contain request ID, route, method, status code, latency, error type, submission ID, review status, the **host name** of a submitted URL (for example `huggingface.co`), and the Clerk user ID.
+Application logs may contain request ID, route, method, status code, latency, error type, submission ID, review status, the **hostname** of a submitted URL (for example `huggingface.co`), and the Clerk user ID.
 
 Application logs must never contain:
 
@@ -79,24 +79,24 @@ Third-party error trackers, if added later, must have request-body capture and I
 
 ### 6. Retention
 
-| Data | Kept for |
-| --- | --- |
-| Chats and their messages | Until the user deletes their account. v1 has no per-chat delete. |
-| Usage records | Until the user deletes their account. |
-| Training consent flag | Until the user deletes their account. |
-| Pending submission | Until a maintainer reviews it. |
-| Rejected or withdrawn submission | Hard-deleted **30 days** after the decision or withdrawal. |
-| Accepted submission | The source record (name, URL unless the contributor withheld it, description, licence, provenance) becomes part of the project's public list of data sources and is kept while the project uses that source. |
-| Link between an accepted source and its contributor | Until the contributor deletes their account or asks to be unlinked. |
-| Account (email, Clerk user ID) | Until the contributor deletes their account. |
-| Hashed IPs | The rate-limit window, at most 24 hours. |
-| Application logs | 14 days. |
-| Backups | Roll off within 30 days. |
+| Data                                                | Kept for                                                                                                                                                                                                     |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Chats and their messages                            | Until the user deletes their account. v1 has no per-chat delete.                                                                                                                                             |
+| Usage records                                       | Until the user deletes their account.                                                                                                                                                                        |
+| Training consent flag                               | Until the user deletes their account.                                                                                                                                                                        |
+| Pending submission                                  | Until a maintainer reviews it.                                                                                                                                                                               |
+| Rejected or withdrawn submission                    | Hard-deleted **30 days** after the decision or withdrawal.                                                                                                                                                   |
+| Accepted submission                                 | The source record (name, URL unless the contributor withheld it, description, licence, provenance) becomes part of the project's public list of data sources and is kept while the project uses that source. |
+| Link between an accepted source and its contributor | Until the contributor deletes their account or asks to be unlinked.                                                                                                                                          |
+| Account (email, Clerk user ID)                      | Until the contributor deletes their account.                                                                                                                                                                 |
+| Hashed IPs                                          | The rate-limit window, at most 24 hours.                                                                                                                                                                     |
+| Application logs                                    | 14 days.                                                                                                                                                                                                     |
+| Backups                                             | Roll off within 30 days.                                                                                                                                                                                     |
 
 - A scheduled job runs at least daily and hard-deletes expired rows. A soft-delete flag does not count as deletion.
 - Contributors can withdraw a pending submission at any time.
 - When a Clerk account is deleted (via the Clerk `user.deleted` webhook), within 24 hours: that user's chats, usage records, consent flag, and pending, rejected and withdrawn submissions are deleted, and accepted source records are kept but have the contributor's user ID and display name removed.
-- Public source records never show a contributor's email address. Credit, if any, uses a display name the contributor chooses. The public registry is a git repo: removing a name changes the current file, but earlier commits still contain it. We do not rewrite git history, and the policy says so.
+- Public source records never show a contributor's email address. Credit, if any, uses a display name the contributor chooses. The public registry is a Git repo: removing a name changes the current file, but earlier commits still contain it. We do not rewrite Git history, and the policy says so.
 - Because backups roll off within 30 days, deleted data is gone from backups no more than 30 days after it is deleted live. The policy states the total worst case: 60 days.
 
 ### 7. People who appear in linked datasets
@@ -106,7 +106,7 @@ Third-party error trackers, if added later, must have request-body capture and I
 
 ### 8. Policy and terms live in this repo
 
-- The canonical text is [docs/privacy-policy.md](../privacy-policy.md) and [docs/terms.md](../terms.md). The front end (FE-8) renders these files at `/privacy` and `/terms` rather than keeping its own copy.
+- The canonical text is [docs/privacy-policy.md](../privacy-policy.md) and [docs/terms.md](../terms.md). The frontend (FE-8) renders these files at `/privacy` and `/terms` rather than keeping its own copy.
 - Both documents show a "Last updated" date at the top. Material changes go through a PR with maintainer review and update that date. They take effect no sooner than 14 days after the new text is published, except where the law requires a faster change.
 
 ## Consequences

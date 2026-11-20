@@ -29,11 +29,11 @@ A maintainer checks each submission against the [data policy](data-policy.md): l
 
 `src/dalanda_registry` is a small Python package that validates the registry file, checks its links, and generates `sources.md`. CI runs it on every pull request and once a week.
 
-| Module | Responsibility |
-| --- | --- |
+| Module        | Responsibility                                                       |
+| ------------- | -------------------------------------------------------------------- |
 | `validate.py` | Loads the YAML, rejects repeated keys, checks fields and duplicates. |
-| `links.py` | Checks that each link still resolves. |
-| `cli.py` | The `dalanda-registry check` command. |
+| `links.py`    | Checks that each link still resolves.                                |
+| `cli.py`      | The `dalanda-registry check` command.                                |
 
 ## Later
 

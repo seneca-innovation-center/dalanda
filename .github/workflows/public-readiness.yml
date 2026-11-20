@@ -5,11 +5,6 @@ name: Public Readiness
 
 on:
   workflow_dispatch:
-    inputs:
-      strict:
-        description: Fail the run on warnings as well as blockers
-        type: boolean
-        default: false
 
 permissions: {}
 
@@ -25,7 +20,10 @@ jobs:
       pull-requests: read
       security-events: write # only used when run-codeql + upload-sarif are on
     with:
-      strict: ${{ inputs.strict }}
+      # zizmor's online audits cannot read the private seneca-innovation-center/.github
+      # repository with this run's token, so Super-Linter skips this one file. The
+      # repository's own CI still runs yamllint and zizmor (offline) on it.
+      lint-exclude-regex: "\\.github/workflows/public-readiness\\.yml$"
     secrets:
       # Optional fine-grained read-only PAT; without it some settings checks
       # report "could not verify".

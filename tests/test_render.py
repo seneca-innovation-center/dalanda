@@ -1,5 +1,7 @@
 # SPDX-FileCopyrightText: 2026 Seneca Innovation Center
 # SPDX-License-Identifier: Apache-2.0
+"""Tests for rendering the registry as Markdown."""
+
 from __future__ import annotations
 
 from datetime import date

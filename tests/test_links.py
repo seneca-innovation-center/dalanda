@@ -1,10 +1,12 @@
 # SPDX-FileCopyrightText: 2026 Seneca Innovation Center
 # SPDX-License-Identifier: Apache-2.0
+"""Tests for the registry link checker, using a fake HTTP opener."""
+
 from __future__ import annotations
 
 import urllib.error
 import urllib.request
-from typing import Any
+from typing import Any, Self
 
 import pytest
 
@@ -12,10 +14,12 @@ from dalanda_registry.links import check_link, check_links
 
 
 class FakeResponse:
+    """Stand-in for the response urlopen returns, as a context manager."""
+
     def __init__(self, status: int) -> None:
         self.status = status
 
-    def __enter__(self) -> FakeResponse:
+    def __enter__(self) -> Self:
         return self
 
     def __exit__(self, *args: object) -> None:
@@ -26,7 +30,10 @@ def opener_for(answers: dict[tuple[str, str], int | Exception]) -> Any:
     """Build an opener that answers (method, url) with a status code or raises."""
     calls: list[tuple[str, str]] = []
 
-    def opener(request: urllib.request.Request, timeout: float) -> FakeResponse:
+    def opener(
+        request: urllib.request.Request,
+        timeout: float,  # pylint: disable=unused-argument
+    ) -> FakeResponse:
         key = (request.get_method(), request.full_url)
         calls.append(key)
         answer = answers[key]

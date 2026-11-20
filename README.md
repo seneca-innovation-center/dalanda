@@ -13,12 +13,12 @@ The end goal is an open model that anyone can use, study and build on.
 
 ## Status
 
-| Phase | Status |
-| --- | --- |
-| Data collection | **Open now.** Share links to Derja text. |
-| Processing | Coming soon |
-| Training | Coming soon |
-| Evaluation and release | Coming soon |
+| Phase                  | Status                                   |
+| ---------------------- | ---------------------------------------- |
+| Data collection        | **Open now.** Share links to Derja text. |
+| Processing             | Coming soon                              |
+| Training               | Coming soon                              |
+| Evaluation and release | Coming soon                              |
 
 Each phase is described in the [roadmap](ROADMAP.md).
 
@@ -75,6 +75,8 @@ uv run dalanda-registry render               # rewrites registry/sources.md from
 ```text
 registry/sources.yaml: 0 sources, format and duplicates OK
 ```
+
+### Testing
 
 Run the tests and linters:
 

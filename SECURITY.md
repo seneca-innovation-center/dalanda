@@ -31,4 +31,4 @@ Only the latest commit on `main` is supported.
 
 ## Secrets
 
-Never commit API keys, tokens or `.env` files. CI scans the full git history with Gitleaks on every pull request.
+Never commit API keys, tokens or `.env` files. CI scans the full Git history with Gitleaks on every pull request.

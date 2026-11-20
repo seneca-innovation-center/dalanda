@@ -51,6 +51,8 @@ class RegistryError(Exception):
 
 @dataclass(frozen=True)
 class Problem:
+    """One validation failure: where it is and what is wrong."""
+
     where: str
     message: str
 
